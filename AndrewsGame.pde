@@ -3,6 +3,8 @@ void setup()
   size(800, 800);
   Player player = new Player('W', 'A', 'D', ' ', 200, height / 2, color(0, 255, 255));
   gameObjects.add(player);
+  NPC npc = new NPC(width - 200, height / 2, color(255, 255, 0));
+  gameObjects.add(npc);
 }
 
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
