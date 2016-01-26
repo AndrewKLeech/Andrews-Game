@@ -34,7 +34,12 @@ class Player extends Characters
     if (keys[move])
     {
       pos.add(forward);
+      moving=true;
     }      
+    else
+    {
+      moving=false;
+    }
     if (keys[left])
     {
       theta -= 0.1f;

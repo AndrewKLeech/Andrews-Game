@@ -33,6 +33,6 @@ class Bullet extends GameObject
   
   void applyTo(Player player)
   {
-    play.lives --;
+    player.lives --;
   }
 }

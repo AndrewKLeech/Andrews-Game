@@ -3,6 +3,8 @@ abstract class Characters extends GameObject
 
   
   int lives;
+  boolean moving=false;
+  int leg=1;
   
   Characters()
   {
@@ -26,6 +28,25 @@ abstract class Characters extends GameObject
     line(0, -30, 0, -40);
     ellipse(-5, -5, 5, 5);
     ellipse(5, -5, 5, 5);
+    if (moving)
+    {
+      if(leg==1)
+      {
+            line(-halfW/2.5f, halfW/2, -halfW/2.5f, halfW/2+10);
+            if (frameCount % 30 == 0)
+            {
+              leg=2;
+            }
+      }
+      if(leg==2)
+      {
+            line(halfW/2.5f, halfW/2, halfW/2.5f, halfW/2+10);
+            if (frameCount % 60 == 0)
+            {
+              leg=1;
+            }
+      }
+    }
     popMatrix();
   }
   
