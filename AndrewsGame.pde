@@ -31,5 +31,29 @@ void draw()
     go.update();
     go.render();
   }
+  checkCollisions();
 }
 
+
+void checkCollisions()
+{
+ for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
+ {
+    GameObject go = gameObjects.get(i);
+    if (go instanceof Characters)
+    {
+      for(int j = gameObjects.size() - 1 ; j >= 0   ;j --)
+      {
+        GameObject other = gameObjects.get(j);
+        //Bullet
+        if (other instanceof Bullet)
+        {
+          if (go.pos.dist(other.pos) < go.halfW)
+          {
+            gameObjects.remove(other);
+          }
+        }
+      }
+    }
+ } 
+}
