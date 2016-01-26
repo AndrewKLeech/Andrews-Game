@@ -31,8 +31,8 @@ class Bullet extends GameObject
     }
   }
   
-  void applyTo(Player player)
+  void applyTo(Characters character)
   {
-    player.lives --;
+    character.lives --;
   }
 }

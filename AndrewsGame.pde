@@ -37,12 +37,12 @@ void draw()
 
 void checkCollisions()
 {
- for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
+ for(int i = gameObjects.size() - 1 ; i >= 0;i --)
  {
     GameObject go = gameObjects.get(i);
     if (go instanceof Characters)
     {
-      for(int j = gameObjects.size() - 1 ; j >= 0   ;j --)
+      for(int j = gameObjects.size() -1; j >= 0;j --)
       {
         GameObject other = gameObjects.get(j);
         //Bullet
@@ -50,7 +50,10 @@ void checkCollisions()
         {
           if (go.pos.dist(other.pos) < go.halfW)
           {
+            ((Bullet) other).applyTo((Characters)go);
             gameObjects.remove(other);
+            j--;
+            gameObjects.remove(go);
           }
         }
       }

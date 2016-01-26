@@ -48,6 +48,15 @@ abstract class Characters extends GameObject
       }
     }
     popMatrix();
+    dead();
   }
+
+void dead()
+{
+  if (lives==0)
+  {
+    
+  }
+}
   
 }
