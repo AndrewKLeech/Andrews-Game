@@ -16,9 +16,9 @@ class Shotgun extends GameObject
   void update()
   {
     
-    pushMatrix(); // reset the translation and rotation
+    pushMatrix();
     translate(pos.x, pos.y);
-    rotate(theta); // We want rotate to happen first, so you make the call AFTER translate 
+    rotate(theta);
     
     stroke(100);
     fill(50);

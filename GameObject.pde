@@ -2,6 +2,7 @@ abstract class GameObject
 {
   PVector pos;
   PVector forward;
+  PVector back;
   float theta = 0.0f;
   float w;
   float halfW;
@@ -18,6 +19,7 @@ abstract class GameObject
   {
     pos = new PVector(x, y);
     forward = new PVector(0, -1);
+    back = new PVector(-1, 0);
     this.w = w; // Disambiguate w by using this
     this.halfW = w * 0.5f;
     this.theta = 0.0f;

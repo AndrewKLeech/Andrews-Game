@@ -1,21 +1,23 @@
 class Player extends Characters
 {
   char move;
+  char moveBack;
   char left;
   char right;
   char fire;
   
+  
   int ammo;
-  float slope;
   
   Player()
   {
 
   }
   
-  Player(char move, char left, char right, char fire, float startX, float startY, color c)
+  Player(char move, char moveBack, char left, char right, char fire, float startX, float startY, color c)
   {
     this.move = move;
+    this.moveBack = moveBack;
     this.left = left;
     this.right = right;
     this.fire = fire;
@@ -31,6 +33,10 @@ class Player extends Characters
     forward.y = - cos(theta);
     forward.mult(speed);
     
+    back.x = -sin(theta);
+    back.y = cos(theta);
+    back.mult(speed);
+    
     if (keys[move])
     {
       pos.add(forward);
@@ -40,14 +46,10 @@ class Player extends Characters
     {
       moving=false;
     }
-    if (keys[left])
+    if (keys[moveBack])
     {
-      theta -= 0.1f;
+      pos.add(back);
     }
-    if (keys[right])
-    {
-      theta += 0.1f;
-    }   
     if (keys[fire]  && elapsed > 12 && ammo > 0 && weapon!="hands")
     {
       // Create a new bullet instance and add it to the arraylist of bullets
@@ -65,7 +67,7 @@ class Player extends Characters
         bullet2.pos.y = pos.y;
         bullet2.pos.add(PVector.mult(forward, 6));
         bullet2.c = c;
-        bullet2.theta = theta -0.3;
+        bullet2.theta = theta -0.1;
         gameObjects.add(bullet2);
         
         Bullet bullet3 = new Bullet();
@@ -73,13 +75,12 @@ class Player extends Characters
         bullet3.pos.y = pos.y;
         bullet3.pos.add(PVector.mult(forward, 6));
         bullet3.c = c;
-        bullet3.theta = theta +0.3;
+        bullet3.theta = theta +0.1;
         gameObjects.add(bullet3);
-      }
+      }//End if
       elapsed = 0;
       ammo --;
-      
-    }
+    }//End if
     //make player follow mouse
     theta = atan2(mouseY- pos.y, mouseX -pos.x)+PI/2;
     

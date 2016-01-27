@@ -1,7 +1,7 @@
 void setup()
 {
   size(1200, 700);
-  Characters person = new Player('W', 'A', 'D', ' ', 200, height / 2, color(0, 255, 255));
+  Characters person = new Player('W', 'S', 'A', 'D', ' ', 200, height / 2, color(0, 255, 255));
   gameObjects.add(person);
   person = new NPC(width - 200, height / 2, color(255, 255, 0));
   gameObjects.add(person);
