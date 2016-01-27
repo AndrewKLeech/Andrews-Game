@@ -49,7 +49,7 @@ class Player extends Characters
     {
       theta += 0.1f;
     }   
-    if (keys[fire]  && elapsed > 12 && ammo > 0)
+    if (keys[fire]  && elapsed > 12 && ammo > 0 && weapon=="pistol")
     {
       // Create a new bullet instance and add it to the arraylist of bullets
       Bullet bullet = new Bullet();

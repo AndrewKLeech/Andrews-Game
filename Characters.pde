@@ -5,7 +5,7 @@ abstract class Characters extends GameObject
   int lives;
   boolean moving=false;
   int leg=1;
-  int weapon = 0;
+  String weapon = "hands";
   
   Characters()
   {
@@ -20,10 +20,10 @@ abstract class Characters extends GameObject
     fill(c);
     rotate(theta); // We want rotate to happen first, so you make the call AFTER translate 
     
+    
     //upper arms
     line(-halfW/2, 0, -halfW/2, -20);
     line(halfW/2, 0, halfW/2, -20);
-    
     stroke(255,228,181);  
     fill(255,228,181); 
     //head
@@ -35,11 +35,21 @@ abstract class Characters extends GameObject
     line(halfW/2, -20, 0, -halfW-10);
     line(-halfW/2, -20, 0, -halfW-10);
     
-    stroke(100);
-    fill(50);
+    //eyes
     
-    //gun
-    rect(-2, -halfW-10, 3, -15);
+    stroke(100);
+      fill(50);
+    ellipse(-5, -5, 5, 5);
+    ellipse(5, -5, 5, 5);
+    if(weapon=="pistol")
+    {
+      stroke(100);
+      fill(50);
+    
+      //gun
+      rect(-2, -halfW-10, 3, -15);
+    }
+
     
     //eyes
     ellipse(-5, -5, 5, 5);

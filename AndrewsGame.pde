@@ -59,6 +59,14 @@ void checkCollisions()
             gameObjects.remove(go);
           }//End if
         }//End if
+        if (other instanceof Pistol)
+        {
+          if (go.pos.dist(other.pos) < go.halfW)
+          {
+            ((Characters)go).weapon = "pistol";
+            gameObjects.remove(other);
+          }
+        }
       }//End for
     }//End if
   }//End for
