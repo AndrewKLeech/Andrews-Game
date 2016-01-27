@@ -9,11 +9,15 @@ void setup()
   gameObjects.add(pistol);
   Shotgun shotgun = new Shotgun(width - 10, height / 2);
   gameObjects.add(shotgun);
-  //Rifle rifle = new Rifle(width - 10, height / 2);
-  //gameObjects.add(rifle);
+  Rifle rifle = new Rifle(width - 50, height / 2);
+  gameObjects.add(rifle);
+
+  img = loadImage("map1.png");
+  background(img);
 }//End setup()
 
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+PImage img;
 
 boolean[] keys = new boolean[512];
 
@@ -30,6 +34,7 @@ void keyReleased()
 void draw()
 {
   background(0);
+  background(img);
     
   for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
   {
@@ -63,6 +68,8 @@ void checkCollisions()
             gameObjects.remove(go);
           }//End if
         }//End if
+        
+        //Pistol
         if (other instanceof Pistol)
         {
           if (go.pos.dist(other.pos) < go.halfW)
@@ -70,7 +77,7 @@ void checkCollisions()
             if (go instanceof Player)
             {
               ((Characters)go).weapon = "pistol";
-              ((Player)go).ammo = 10;
+              ((Player)go).ammo = 8;
               gameObjects.remove(other);
             }//End if
             else if(((Characters)go).weapon == "hands")
@@ -80,6 +87,8 @@ void checkCollisions()
             }//End if
           }//End if
         }//End if
+        
+        //Shotgun
         if (other instanceof Shotgun)
         {
           if (go.pos.dist(other.pos) < go.halfW)
@@ -87,12 +96,31 @@ void checkCollisions()
             if (go instanceof Player)
             {
               ((Characters)go).weapon = "shotgun";
-              ((Player)go).ammo = 6;
+              ((Player)go).ammo = 4;
               gameObjects.remove(other);
             }//End if
             else if(((Characters)go).weapon == "hands" || ((Characters)go).weapon == "pistol")
             {
               ((Characters)go).weapon = "shotgun";
+              gameObjects.remove(other);
+            }//End else if
+          }//End if
+        }//End if
+        
+        //Rifle
+        if (other instanceof Rifle)
+        {
+          if (go.pos.dist(other.pos) < go.halfW)
+          {
+            if (go instanceof Player)
+            {
+              ((Characters)go).weapon = "rifle";
+              ((Player)go).ammo = 20;
+              gameObjects.remove(other);
+            }//End if
+            else if(((Characters)go).weapon == "hands" || ((Characters)go).weapon == "pistol")
+            {
+              ((Characters)go).weapon = "rifle";
               gameObjects.remove(other);
             }//End else if
           }//End if

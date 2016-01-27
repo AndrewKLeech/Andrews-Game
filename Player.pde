@@ -51,16 +51,28 @@ class Player extends Characters
     }//End if
     if (keys[fire]  && elapsed > 12 && ammo > 0 && weapon!="hands")
     {
-      // Create a new bullet instance and add it to the arraylist of bullets
-      Bullet bullet = new Bullet();
-      bullet.pos.x = pos.x;
-      bullet.pos.y = pos.y;
-      bullet.pos.add(PVector.mult(forward, 6));
-      bullet.c = c;
-      bullet.theta = theta;
-      gameObjects.add(bullet);
+      
+      if(weapon=="pistol")
+      { 
+        Bullet bullet = new Bullet();
+        bullet.pos.x = pos.x;
+        bullet.pos.y = pos.y;
+        bullet.pos.add(PVector.mult(forward, 6));
+        bullet.c = c;
+        bullet.theta = theta;
+        gameObjects.add(bullet);
+       }//End if
       if(weapon=="shotgun")
       {
+               
+        Bullet bullet = new Bullet();
+        bullet.pos.x = pos.x;
+        bullet.pos.y = pos.y;
+        bullet.pos.add(PVector.mult(forward, 6));
+        bullet.c = c;
+        bullet.theta = theta;
+        gameObjects.add(bullet);
+        
         Bullet bullet2 = new Bullet();
         bullet2.pos.x = pos.x;
         bullet2.pos.y = pos.y;
@@ -77,8 +89,18 @@ class Player extends Characters
         bullet3.theta = theta +0.1;
         gameObjects.add(bullet3);
       }//End if
-      elapsed = 0;
-      ammo --;
+      if(weapon=="rifle")
+      { 
+        Bullet bullet = new Bullet();
+        bullet.pos.x = pos.x;
+        bullet.pos.y = pos.y;
+        bullet.pos.add(PVector.mult(forward, 6));
+        bullet.c = c;
+        bullet.theta = theta;
+        gameObjects.add(bullet);
+       }//End if
+        elapsed = 0;
+        ammo --;
     }//End if
     
     //make player follow mouse

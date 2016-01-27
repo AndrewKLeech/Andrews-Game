@@ -60,6 +60,19 @@ abstract class Characters extends GameObject
       //hilt
       rect(-2, -halfW-10, 3, +5);
     }
+    if(weapon=="rifle")
+    {
+      //Barel
+      rect(-2, -halfW-10, 3, -25);
+      line(0, -halfW-10, 0, -halfW-35);
+      
+      //brown
+      fill(139,69,19);
+      stroke(139,69,19);
+      
+      //hilt
+      rect(-2, -halfW-10, 3, +5);
+    }
     
     //Animation for moving foward
     if (moving)
