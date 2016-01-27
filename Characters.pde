@@ -43,11 +43,12 @@ abstract class Characters extends GameObject
     ellipse(5, -5, 5, 5);
     if(weapon=="pistol")
     {
-      stroke(100);
-      fill(50);
-    
       //gun
       rect(-2, -halfW-10, 3, -15);
+    }
+    if(weapon=="shotgun")
+    {
+      rect(-2, -halfW-10, 3, -25);
     }
 
     

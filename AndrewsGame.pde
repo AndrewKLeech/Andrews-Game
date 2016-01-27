@@ -7,6 +7,8 @@ void setup()
   gameObjects.add(person);
   Pistol pistol = new Pistol(width - 200, height / 2);
   gameObjects.add(pistol);
+  Shotgun shotgun = new Shotgun(width - 10, height / 2);
+  gameObjects.add(shotgun);
 }
 
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
@@ -77,6 +79,23 @@ void checkCollisions()
             
           }
         }
+        if (other instanceof Shotgun)
+        {
+          if (go.pos.dist(other.pos) < go.halfW)
+          {
+            if (go instanceof Player)
+            {
+              ((Characters)go).weapon = "shotgun";
+              ((Player)go).ammo = 6;
+              gameObjects.remove(other);
+            }//End if
+            else if(((Characters)go).weapon == "hands" || ((Characters)go).weapon == "pistol")
+            {
+              ((Characters)go).weapon = "shotgun";
+              gameObjects.remove(other);
+            }//End else if
+          }//End if
+        }//End if
       }//End for
     }//End if
   }//End for
