@@ -13,7 +13,6 @@ void setup()
   gameObjects.add(rifle);
 
   img = loadImage("map1.png");
-  background(img);
 }//End setup()
 
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();

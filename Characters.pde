@@ -18,21 +18,24 @@ abstract class Characters extends GameObject
     stroke(c);
     fill(c);
     rotate(theta); 
+    strokeWeight(5);
     
     //upper arms
     line(-halfW/2, 0, -halfW/2, -20);
     line(halfW/2, 0, halfW/2, -20);
     
     //Color for skin
-    stroke(255,228,181);  
-    fill(255,228,181); 
+    stroke(189,183,107); 
+    fill(189,183,107);
     
     //head
     ellipse(0, 0, halfW, halfW);
         
     //forearms
+    
     line(halfW/2, -20, 0, -halfW-10);
     line(-halfW/2, -20, 0, -halfW-10);
+    strokeWeight(1);
     
     //Color for eyes and guns
     stroke(100);
@@ -73,7 +76,7 @@ abstract class Characters extends GameObject
       //hilt
       rect(-2, -halfW-10, 3, +5);
     }
-    
+    strokeWeight(5);
     //Animation for moving foward
     if (moving)
     {
@@ -95,6 +98,7 @@ abstract class Characters extends GameObject
         }//End if
       }//End if
     }//End if(moving)
+    strokeWeight(1);
     popMatrix();
   }//End render
 }//End Characters class
