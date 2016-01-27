@@ -21,7 +21,6 @@ class Player extends Characters
     this.fire = fire;
     this.c = c;
     lives = 10;
-    ammo = 20;
   }
 
   int elapsed = 12;

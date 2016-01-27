@@ -63,8 +63,18 @@ void checkCollisions()
         {
           if (go.pos.dist(other.pos) < go.halfW)
           {
-            ((Characters)go).weapon = "pistol";
-            gameObjects.remove(other);
+            if (go instanceof Player)
+            {
+              ((Characters)go).weapon = "pistol";
+              ((Player)go).ammo = 10;
+              gameObjects.remove(other);
+            }
+            else if(((Characters)go).weapon == "hands")
+            {
+              ((Characters)go).weapon = "pistol";
+              gameObjects.remove(other);
+            }
+            
           }
         }
       }//End for
