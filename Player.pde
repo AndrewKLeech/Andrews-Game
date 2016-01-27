@@ -58,6 +58,24 @@ class Player extends Characters
       bullet.c = c;
       bullet.theta = theta;
       gameObjects.add(bullet);
+      if(weapon=="shotgun")
+      {
+        Bullet bullet2 = new Bullet();
+        bullet2.pos.x = pos.x;
+        bullet2.pos.y = pos.y;
+        bullet2.pos.add(PVector.mult(forward, 6));
+        bullet2.c = c;
+        bullet2.theta = theta -0.3;
+        gameObjects.add(bullet2);
+        
+        Bullet bullet3 = new Bullet();
+        bullet3.pos.x = pos.x;
+        bullet3.pos.y = pos.y;
+        bullet3.pos.add(PVector.mult(forward, 6));
+        bullet3.c = c;
+        bullet3.theta = theta +0.3;
+        gameObjects.add(bullet3);
+      }
       elapsed = 0;
       ammo --;
       
