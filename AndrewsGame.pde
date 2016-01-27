@@ -5,7 +5,7 @@ void setup()
   gameObjects.add(person);
   person = new NPC(width - 200, height / 2, color(255, 255, 0));
   gameObjects.add(person);
-  Pistol pistol = new Pistol(width - 200, height / 2, color(255, 255, 0));
+  Pistol pistol = new Pistol(width - 200, height / 2);
   gameObjects.add(pistol);
 }
 

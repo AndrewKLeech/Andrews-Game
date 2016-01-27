@@ -39,7 +39,7 @@ abstract class Characters extends GameObject
     fill(50);
     
     //gun
-    line(0, -30, 0, -40);
+    rect(-2, -halfW-10, 3, -15);
     
     //eyes
     ellipse(-5, -5, 5, 5);
