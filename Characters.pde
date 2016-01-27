@@ -5,6 +5,7 @@ abstract class Characters extends GameObject
   int lives;
   boolean moving=false;
   int leg=1;
+  int weapon = 0;
   
   Characters()
   {
@@ -17,15 +18,30 @@ abstract class Characters extends GameObject
     translate(pos.x, pos.y);
     stroke(c);
     fill(c);
-    rotate(theta); // We want rotate to happen first, so you make the call AFTER translate    
-    ellipse(0, 0, halfW, halfW);
+    rotate(theta); // We want rotate to happen first, so you make the call AFTER translate 
+    
+    //upper arms
     line(-halfW/2, 0, -halfW/2, -20);
     line(halfW/2, 0, halfW/2, -20);
+    
+    stroke(255,228,181);  
+    fill(255,228,181); 
+    //head
+    ellipse(0, 0, halfW, halfW);
+    
+
+    
+    //forearms
     line(halfW/2, -20, 0, -halfW-10);
     line(-halfW/2, -20, 0, -halfW-10);
+    
     stroke(100);
     fill(50);
+    
+    //gun
     line(0, -30, 0, -40);
+    
+    //eyes
     ellipse(-5, -5, 5, 5);
     ellipse(5, -5, 5, 5);
     if (moving)
@@ -48,15 +64,5 @@ abstract class Characters extends GameObject
       }
     }
     popMatrix();
-    dead();
   }
-
-void dead()
-{
-  if (lives==0)
-  {
-    
-  }
-}
-  
 }

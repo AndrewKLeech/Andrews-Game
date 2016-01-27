@@ -3,7 +3,7 @@ class Bullet extends GameObject
   
   Bullet()
   {
-    speed = 20.0f;
+    speed = 30.0f;
   }
   
   void render()

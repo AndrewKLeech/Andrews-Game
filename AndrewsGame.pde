@@ -1,10 +1,12 @@
 void setup()
 {
-  size(500, 500);
+  size(1200, 700);
   Characters person = new Player('W', 'A', 'D', ' ', 200, height / 2, color(0, 255, 255));
   gameObjects.add(person);
   person = new NPC(width - 200, height / 2, color(255, 255, 0));
   gameObjects.add(person);
+  Pistol pistol = new Pistol(width - 200, height / 2, color(255, 255, 0));
+  gameObjects.add(pistol);
 }
 
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
@@ -37,8 +39,8 @@ void draw()
 
 void checkCollisions()
 {
- for(int i = gameObjects.size() - 1 ; i >= 0;i --)
- {
+  for(int i = gameObjects.size() - 1 ; i >= 0;i --)
+  {
     GameObject go = gameObjects.get(i);
     if (go instanceof Characters)
     {
@@ -52,11 +54,12 @@ void checkCollisions()
           {
             ((Bullet) other).applyTo((Characters)go);
             gameObjects.remove(other);
+            //if this isnt here array gets broken
             j--;
             gameObjects.remove(go);
-          }
-        }
-      }
-    }
- } 
-}
+          }//End if
+        }//End if
+      }//End for
+    }//End if
+  }//End for
+}//End checkCollisions()

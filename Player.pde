@@ -6,7 +6,6 @@ class Player extends Characters
   char fire;
   
   int ammo;
-  float dis1,dis2;
   float slope;
   
   Player()
@@ -22,7 +21,7 @@ class Player extends Characters
     this.fire = fire;
     this.c = c;
     lives = 10;
-    ammo = 10;
+    ammo = 20;
   }
 
   int elapsed = 12;
