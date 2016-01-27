@@ -49,7 +49,7 @@ abstract class Characters extends GameObject
       if(leg==1)
       {
             line(-halfW/2.5f, halfW/2, -halfW/2.5f, halfW/2+10);
-            if (frameCount % 30 == 0)
+            if (frameCount % 20 == 0)
             {
               leg=2;
             }
@@ -57,7 +57,7 @@ abstract class Characters extends GameObject
       if(leg==2)
       {
             line(halfW/2.5f, halfW/2, halfW/2.5f, halfW/2+10);
-            if (frameCount % 60 == 0)
+            if (frameCount % 40 == 0)
             {
               leg=1;
             }

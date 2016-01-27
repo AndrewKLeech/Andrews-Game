@@ -26,7 +26,7 @@ class Pistol extends GameObject
     fill(50);
     
     //gun
-    line(0, -30, 0, -40);
+    rect(0, -10, 3, -15);
     popMatrix();
   }
   
