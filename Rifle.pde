@@ -1,11 +1,11 @@
-class Shotgun extends GameObject
+class Rifle extends GameObject
 {
-  Shotgun()
+  Rifle()
   {
     super(width * 0.5f, height  * 0.5f, 50);   
   }//End Shotgun()
 
-  Shotgun(float startX, float startY)
+  Rifle(float startX, float startY)
   {
     super(startX, startY, 50);
     this.c = c;
@@ -26,8 +26,7 @@ class Shotgun extends GameObject
     fill(50);
     
     //gun
-    rect(0, -10, 4, -25);
-    line(2, -10, 2, -25);
+    rect(0, -10, 3, -28);
     popMatrix();
   }//End render
 }//End Shotgun class

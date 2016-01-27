@@ -9,6 +9,8 @@ void setup()
   gameObjects.add(pistol);
   Shotgun shotgun = new Shotgun(width - 10, height / 2);
   gameObjects.add(shotgun);
+  //Rifle rifle = new Rifle(width - 10, height / 2);
+  //gameObjects.add(rifle);
 }//End setup()
 
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
