@@ -1,6 +1,5 @@
 class Bullet extends GameObject
 {
-  
   Bullet()
   {
     speed = 30.0f;
@@ -20,19 +19,18 @@ class Bullet extends GameObject
   {
     forward.x = sin(theta);
     forward.y = - cos(theta);
-      
     forward.mult(speed);
     pos.add(forward);
     
+    //Bullet removed if it hits the edge of the screen
     if (pos.x < 0 || pos.y < 0 || pos.x > width || pos.y > height)
     {
-      // Im dead!
       gameObjects.remove(this);
-    }
-  }
+    }//End if
+  }//End if
   
   void applyTo(Characters character)
   {
     character.lives --;
   }
-}
+}//End Bullet class

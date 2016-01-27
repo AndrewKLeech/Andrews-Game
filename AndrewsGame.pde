@@ -9,7 +9,7 @@ void setup()
   gameObjects.add(pistol);
   Shotgun shotgun = new Shotgun(width - 10, height / 2);
   gameObjects.add(shotgun);
-}
+}//End setup()
 
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 
@@ -34,9 +34,9 @@ void draw()
     GameObject go = gameObjects.get(i);
     go.update();
     go.render();
-  }
+  }//End for
   checkCollisions();
-}
+}//End draw()
 
 
 void checkCollisions()
@@ -70,15 +70,14 @@ void checkCollisions()
               ((Characters)go).weapon = "pistol";
               ((Player)go).ammo = 10;
               gameObjects.remove(other);
-            }
+            }//End if
             else if(((Characters)go).weapon == "hands")
             {
               ((Characters)go).weapon = "pistol";
               gameObjects.remove(other);
-            }
-            
-          }
-        }
+            }//End if
+          }//End if
+        }//End if
         if (other instanceof Shotgun)
         {
           if (go.pos.dist(other.pos) < go.halfW)

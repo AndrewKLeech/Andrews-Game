@@ -1,9 +1,8 @@
 abstract class Characters extends GameObject
 {
-
   
   int lives;
-  boolean moving=false;
+  boolean moving = false;
   int leg=1;
   String weapon = "hands";
   
@@ -14,66 +13,66 @@ abstract class Characters extends GameObject
   
   void render()
   {
-    pushMatrix(); // reset the translation and rotation
+    pushMatrix();
     translate(pos.x, pos.y);
     stroke(c);
     fill(c);
-    rotate(theta); // We want rotate to happen first, so you make the call AFTER translate 
-    
+    rotate(theta); 
     
     //upper arms
     line(-halfW/2, 0, -halfW/2, -20);
     line(halfW/2, 0, halfW/2, -20);
+    
+    //Color for skin
     stroke(255,228,181);  
     fill(255,228,181); 
+    
     //head
     ellipse(0, 0, halfW, halfW);
-    
-
-    
+        
     //forearms
     line(halfW/2, -20, 0, -halfW-10);
     line(-halfW/2, -20, 0, -halfW-10);
     
-    //eyes
-    
+    //Color for eyes and guns
     stroke(100);
-      fill(50);
+    fill(50);
+    
+    //eyes
     ellipse(-5, -5, 5, 5);
     ellipse(5, -5, 5, 5);
+    
+    //Weapons
     if(weapon=="pistol")
     {
-      //gun
       rect(-2, -halfW-10, 3, -15);
     }
     if(weapon=="shotgun")
     {
       rect(-2, -halfW-10, 3, -25);
     }
-
     
-    //eyes
-    ellipse(-5, -5, 5, 5);
-    ellipse(5, -5, 5, 5);
+    //Animation for moving foward
     if (moving)
     {
       if(leg==1)
       {
-            line(-halfW/2.5f, halfW/2, -halfW/2.5f, halfW/2+10);
-            if (frameCount % 20 == 0)
-            {
-              leg=2;
-            }
-      }
+        line(-halfW/2.5f, halfW/2, -halfW/2.5f, halfW/2+10);
+        if (frameCount % 20 == 0)
+        {
+          leg=2;
+        }//End if
+      }//End if
+      
       if(leg==2)
       {
-            line(halfW/2.5f, halfW/2, halfW/2.5f, halfW/2+10);
-            if (frameCount % 40 == 0)
-            {
-              leg=1;
-            }
-      }
-    }
+        line(halfW/2.5f, halfW/2, halfW/2.5f, halfW/2+10);
+        if (frameCount % 40 == 0)
+        {
+          leg=1;
+        }//End if
+      }//End if
+    }//End if(moving)
     popMatrix();
-  }
-}
+  }//End render
+}//End Characters class

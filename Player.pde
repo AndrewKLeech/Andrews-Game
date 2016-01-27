@@ -6,13 +6,12 @@ class Player extends Characters
   char right;
   char fire;
   
-  
   int ammo;
   
   Player()
   {
 
-  }
+  }//End Player()
   
   Player(char move, char moveBack, char left, char right, char fire, float startX, float startY, color c)
   {
@@ -23,7 +22,7 @@ class Player extends Characters
     this.fire = fire;
     this.c = c;
     lives = 10;
-  }
+  }//End Player
 
   int elapsed = 12;
   
@@ -41,15 +40,15 @@ class Player extends Characters
     {
       pos.add(forward);
       moving=true;
-    }      
+    }//End if
     else
     {
       moving=false;
-    }
+    }//End else
     if (keys[moveBack])
     {
       pos.add(back);
-    }
+    }//End if
     if (keys[fire]  && elapsed > 12 && ammo > 0 && weapon!="hands")
     {
       // Create a new bullet instance and add it to the arraylist of bullets
@@ -81,28 +80,30 @@ class Player extends Characters
       elapsed = 0;
       ammo --;
     }//End if
+    
     //make player follow mouse
+    //PI/2 added so front of player faces the mouse. Otherwise the player would face 90 degrees left of the mouse
     theta = atan2(mouseY- pos.y, mouseX -pos.x)+PI/2;
     
     if (pos.x < 0)
     {
       pos.x = width;
-    }
+    }//End if
     
     if (pos.x > width)
     {
       pos.x = 0;
-    }
+    }//End if
     
     if (pos.y < 0)
     {
       pos.y = height;
-    }
+    }//End if
     
     if (pos.y > height)
     {
       pos.y = 0;
-    }
+    }//End if
     elapsed ++;
-  }
-}
+  }//End update()
+}//End Player class
