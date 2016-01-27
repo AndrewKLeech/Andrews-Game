@@ -1,10 +1,10 @@
 void setup()
 {
-  size(800, 800);
-  Player player = new Player('W', 'A', 'D', ' ', 200, height / 2, color(0, 255, 255));
-  gameObjects.add(player);
-  NPC npc = new NPC(width - 200, height / 2, color(255, 255, 0));
-  gameObjects.add(npc);
+  size(500, 500);
+  Characters person = new Player('W', 'A', 'D', ' ', 200, height / 2, color(0, 255, 255));
+  gameObjects.add(person);
+  person = new NPC(width - 200, height / 2, color(255, 255, 0));
+  gameObjects.add(person);
 }
 
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
@@ -32,6 +32,12 @@ void draw()
     go.render();
   }
   checkCollisions();
+  
+  //temp
+  line(0,0,width,height);
+  line(width/2,height,width/2,0);
+  line(0,height/2,width,height/2);
+  line(height,0,0,width);
 }
 
 

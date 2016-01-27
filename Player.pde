@@ -6,6 +6,8 @@ class Player extends Characters
   char fire;
   
   int ammo;
+  float dis1,dis2;
+  float slope;
   
   Player()
   {
@@ -47,7 +49,7 @@ class Player extends Characters
     if (keys[right])
     {
       theta += 0.1f;
-    }      
+    }   
     if (keys[fire]  && elapsed > 12 && ammo > 0)
     {
       // Create a new bullet instance and add it to the arraylist of bullets
@@ -62,6 +64,8 @@ class Player extends Characters
       ammo --;
       
     }
+    //make player follow mouse
+    theta = atan2(mouseY- pos.y, mouseX -pos.x)+PI/2;
     
     if (pos.x < 0)
     {
