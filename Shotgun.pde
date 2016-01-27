@@ -28,6 +28,13 @@ class Shotgun extends GameObject
     //gun
     rect(0, -10, 4, -25);
     line(2, -10, 2, -25);
+    
+    //brown
+    fill(139,69,19);
+    stroke(139,69,19);
+    
+    //hilt
+    rect(4, -35, -4, -5);
     popMatrix();
   }//End render
 }//End Shotgun class
