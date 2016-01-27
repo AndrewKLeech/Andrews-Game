@@ -32,12 +32,6 @@ void draw()
     go.render();
   }
   checkCollisions();
-  
-  //temp
-  line(0,0,width,height);
-  line(width/2,height,width/2,0);
-  line(0,height/2,width,height/2);
-  line(height,0,0,width);
 }
 
 
