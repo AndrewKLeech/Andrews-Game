@@ -1,10 +1,5 @@
 class NPC extends Characters
-{
-  NPC()
-  {
-
-  }//End NPC
-  
+{ 
   NPC(float startX, float startY, color c)
   {
     this.c = c;

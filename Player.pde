@@ -5,13 +5,7 @@ class Player extends Characters
   char left;
   char right;
   char fire;
-  
   int ammo;
-  
-  Player()
-  {
-
-  }//End Player()
   
   Player(char move, char moveBack, char left, char right, char fire, float startX, float startY, color c)
   {
@@ -31,7 +25,6 @@ class Player extends Characters
     forward.x = sin(theta);
     forward.y = - cos(theta);
     forward.mult(speed);
-    
     back.x = -sin(theta);
     back.y = cos(theta);
     back.mult(speed);

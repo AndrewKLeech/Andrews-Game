@@ -3,22 +3,44 @@ void setup()
   size(1200, 700);
   Characters person = new Player('W', 'S', 'A', 'D', ' ', 200, height / 2, color(0, 255, 255));
   gameObjects.add(person);
-  person = new NPC(width - 200, height / 2, color(255, 255, 0));
+  person = new NPC(width - 300, height / 2, color(255, 255, 0));
   gameObjects.add(person);
   Pistol pistol = new Pistol(width - 200, height / 2);
   gameObjects.add(pistol);
-  Shotgun shotgun = new Shotgun(width - 10, height / 2);
+  Shotgun shotgun = new Shotgun(width/4, height / 2);
   gameObjects.add(shotgun);
   Rifle rifle = new Rifle(width - 50, height / 2);
   gameObjects.add(rifle);
-
-  img = loadImage("map1.png");
 }//End setup()
 
+//Maps stored in this String array
+String[] maps = {"map1.png","map2.png","map3.png"};
+
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
-PImage img;
+
+//Level details stored here
+ArrayList<Level> levels = new ArrayList<Level>();
+
+int currentLevel=0;
+boolean loaded = false;
 
 boolean[] keys = new boolean[512];
+
+void loadLevels()
+{
+  if(loaded == false)
+  {
+    Level level = new Level(maps[currentLevel],8);
+    levels.add(level);
+    loaded = true;
+    levels.get(currentLevel).load();
+  }
+  //If all npc's are dead go to next level
+  if(levels.get(currentLevel).npcCount == 0)
+  {
+    currentLevel++;
+  }
+}
 
 void keyPressed()
 {
@@ -33,7 +55,9 @@ void keyReleased()
 void draw()
 {
   background(0);
-  background(img);
+  //Temp
+  loadLevels();
+  background(levels.get(currentLevel).map);
     
   for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
   {
