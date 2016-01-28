@@ -3,8 +3,6 @@ void setup()
   size(1200, 700);
   Characters person = new Player('W', 'S', 'A', 'D', ' ', 200, height / 2, color(0, 255, 255));
   gameObjects.add(person);
-  person = new NPC(width - 300, height / 2, color(255, 255, 0));
-  gameObjects.add(person);
   Pistol pistol = new Pistol(width - 200, height / 2);
   gameObjects.add(pistol);
   Shotgun shotgun = new Shotgun(width/4, height / 2);
@@ -34,6 +32,11 @@ void loadLevels()
     levels.add(level);
     loaded = true;
     levels.get(currentLevel).load();
+    for(int i = 0; i < levels.get(currentLevel).npcCount; i++)
+    {
+        Characters person = new NPC(width - 300+i, height / 2, color(255, 255, 0));
+        gameObjects.add(person);
+    }
   }
   //If all npc's are dead go to next level
   if(levels.get(currentLevel).npcCount == 0)

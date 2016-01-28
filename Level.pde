@@ -14,6 +14,6 @@ class Level
   
   void load()
   {
-
+    
   }
 }

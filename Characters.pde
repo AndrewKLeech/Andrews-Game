@@ -1,6 +1,5 @@
 abstract class Characters extends GameObject
 {
-  
   int lives;
   boolean moving = false;
   int leg=1;
