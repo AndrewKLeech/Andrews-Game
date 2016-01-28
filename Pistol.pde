@@ -1,10 +1,5 @@
 class Pistol extends GameObject
-{
-  Pistol()
-  {
-    super(width * 0.5f, height  * 0.5f, 50);   
-  }//End Pistol()
-  
+{ 
   Pistol(float startX, float startY)
   {
     super(startX, startY, 50);

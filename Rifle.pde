@@ -1,10 +1,5 @@
 class Rifle extends GameObject
 {
-  Rifle()
-  {
-    super(width * 0.5f, height  * 0.5f, 50);   
-  }//End Shotgun()
-
   Rifle(float startX, float startY)
   {
     super(startX, startY, 50);

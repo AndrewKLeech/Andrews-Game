@@ -1,10 +1,5 @@
 class Shotgun extends GameObject
 {
-  Shotgun()
-  {
-    super(width * 0.5f, height  * 0.5f, 50);   
-  }//End Shotgun()
-
   Shotgun(float startX, float startY)
   {
     super(startX, startY, 50);
