@@ -14,24 +14,24 @@ class NPC extends Characters
     forward.y = - cos(theta);
     forward.mult(speed);
     
-    if (pos.x < 0)
+    if (pos.x < 10)
     {
-      pos.x = width;
+      pos.x = 10;
     }//End if
     
-    if (pos.x > width)
+    if (pos.x > width-10)
     {
-      pos.x = 0;
+      pos.x = width-10;
     }//End if
     
-    if (pos.y < 0)
+    if (pos.y < 10)
     {
-      pos.y = height;
+      pos.y = 10;
     }//End if
     
-    if (pos.y > height)
+    if (pos.y > height-10)
     {
-      pos.y = 0;
+      pos.y = height-10;
     }//End if
     elapsed ++;
   }//End update()
