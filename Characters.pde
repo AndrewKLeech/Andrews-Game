@@ -7,7 +7,7 @@ abstract class Characters extends GameObject
   
   Characters()
   {
-    super(width * 0.5f, height  * 0.5f, 50);     
+    super(width * 0.2f, height  * 0.5f, 50);     
   }
   
   void render()

@@ -26,6 +26,13 @@ boolean[] keys = new boolean[512];
 
 void loadLevels()
 {
+  
+  //If all npc's are dead go to next level
+  if(loaded && levels.get(currentLevel).npcCount == 0)
+  {
+    currentLevel++;
+    loaded = false;
+  }
   if(loaded == false)
   {
     Level level = new Level(maps[currentLevel],8);
@@ -38,11 +45,7 @@ void loadLevels()
         gameObjects.add(person);
     }
   }
-  //If all npc's are dead go to next level
-  if(levels.get(currentLevel).npcCount == 0)
-  {
-    currentLevel++;
-  }
+
 }
 
 void keyPressed()
@@ -92,6 +95,7 @@ void checkCollisions()
             //if this isnt here array gets broken
             j--;
             gameObjects.remove(go);
+            levels.get(currentLevel).npcCount--;
           }//End if
         }//End if
         
