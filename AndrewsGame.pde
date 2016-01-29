@@ -25,10 +25,9 @@ boolean loaded = false;
 boolean[] keys = new boolean[512];
 
 void loadLevels()
-{
-  
+{ 
   //If all npc's are dead go to next level
-  if(loaded && levels.get(currentLevel).npcCount == 0)
+  if(loaded && levels.get(currentLevel).npcCount == 0 && currentLevel<maps.length-1)
   {
     currentLevel++;
     loaded = false;
@@ -45,7 +44,6 @@ void loadLevels()
         gameObjects.add(person);
     }
   }
-
 }
 
 void keyPressed()
