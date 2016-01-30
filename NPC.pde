@@ -2,6 +2,7 @@ class NPC extends Characters
 { 
   NPC(float startX, float startY, color c)
   {
+    super(startX, startY);
     this.c = c;
     lives = 1;
   }//End NPC

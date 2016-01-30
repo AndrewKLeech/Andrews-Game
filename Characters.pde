@@ -5,9 +5,9 @@ abstract class Characters extends GameObject
   int leg=1;
   String weapon = "hands";
   
-  Characters()
+  Characters(float startX, float startY)
   {
-    super(width * 0.2f, height  * 0.5f, 50);     
+    super(startX, startY, 50);     
   }
   
   void render()

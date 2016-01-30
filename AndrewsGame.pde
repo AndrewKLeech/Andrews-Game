@@ -53,7 +53,7 @@ void loadLevels()
       py = Float.parseFloat(parts[2]);
       if(i == 0)
       {
-        Characters person = new Player('W', 'S', 'A', 'D', ' ', 200, height / 2, color(0, 255, 255));
+        Characters person = new Player('W', 'S', 'A', 'D', ' ', px,py,color(0, 255, 255));
         gameObjects.add(person);
         println("player");
       }

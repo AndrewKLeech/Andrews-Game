@@ -9,6 +9,7 @@ class Player extends Characters
   
   Player(char move, char moveBack, char left, char right, char fire, float startX, float startY, color c)
   {
+    super(startX, startY);   
     this.move = move;
     this.moveBack = moveBack;
     this.left = left;
