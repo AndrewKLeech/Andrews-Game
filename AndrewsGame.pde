@@ -36,6 +36,10 @@ void loadLevels()
   {
     currentLevel++;
     loaded = false;
+    for(int i = gameObjects.size() - 1 ; i >= 0;i--)
+    {
+      gameObjects.remove(i);
+    }
   }
   if(loaded == false)
   {
@@ -65,11 +69,6 @@ void loadLevels()
       }
 
     }
-    //for(int i = 0; i < levels.get(currentLevel).npcCount; i++)
-    //{
-    //    Characters person = new NPC(width - 300+i, height / 2, color(255, 255, 0));
-    //    gameObjects.add(person);
-    //}
   }
 }
 
