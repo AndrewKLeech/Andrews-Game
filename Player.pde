@@ -42,9 +42,9 @@ class Player extends Characters
     {
       pos.add(back);
     }//End if
-    if (keys[fire]  && elapsed > 12 && ammo > 0 && weapon!="hands")
+    if (mouseButton == LEFT  && elapsed > 12 && ammo > 0 && weapon!="hands")
     {
-      
+      mouseButton=0;
       if(weapon=="pistol")
       { 
         Bullet bullet = new Bullet();
@@ -121,4 +121,6 @@ class Player extends Characters
     }//End if
     elapsed ++;
   }//End update()
+  
+
 }//End Player class
