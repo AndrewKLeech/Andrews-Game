@@ -59,7 +59,7 @@ void loadLevels()
       }
       else
       {
-        Characters person = new NPC(width - 300, height / 2, color(255, 255, 0));
+        Characters person = new NPC(px, py, color(255, 255, 0));
         gameObjects.add(person);
         println("player");
       }
