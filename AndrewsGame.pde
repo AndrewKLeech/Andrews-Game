@@ -1,19 +1,24 @@
 void setup()
 {
   size(1200, 700);
-  Characters person = new Player('W', 'S', 'A', 'D', ' ', 200, height / 2, color(0, 255, 255));
-  gameObjects.add(person);
+  //Characters person = new Player('W', 'S', 'A', 'D', ' ', 200, height / 2, color(0, 255, 255));
+  //gameObjects.add(person);
   Pistol pistol = new Pistol(width - 200, height / 2);
   gameObjects.add(pistol);
   Shotgun shotgun = new Shotgun(width/4, height / 2);
   gameObjects.add(shotgun);
   Rifle rifle = new Rifle(width - 50, height / 2);
   gameObjects.add(rifle);
+
 }//End setup()
 
 //Maps stored in this String array
 String[] maps = {"map1.png","map2.png","map3.png"};
-
+String[] mapData = {"map1_info.txt","map1_info.txt","map1_info.txt"};
+int line;
+String type;
+float px;
+float py;
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 
 //Level details stored here
@@ -34,15 +39,37 @@ void loadLevels()
   }
   if(loaded == false)
   {
+    String[] lines = loadStrings(mapData[currentLevel]);
+    line=lines.length;
     Level level = new Level(maps[currentLevel],8);
     levels.add(level);
     loaded = true;
-    levels.get(currentLevel).load();
-    for(int i = 0; i < levels.get(currentLevel).npcCount; i++)
+    for (int i = 0 ; i < line ; i ++)
     {
-        Characters person = new NPC(width - 300+i, height / 2, color(255, 255, 0));
+      String[] parts = lines[i].split(",");
+      type = parts[0];
+      println(type);
+      px = Float.parseFloat(parts[1]);
+      py = Float.parseFloat(parts[2]);
+      if(i == 0)
+      {
+        Characters person = new Player('W', 'S', 'A', 'D', ' ', 200, height / 2, color(0, 255, 255));
         gameObjects.add(person);
+        println("player");
+      }
+      else
+      {
+        Characters person = new NPC(width - 300, height / 2, color(255, 255, 0));
+        gameObjects.add(person);
+        println("player");
+      }
+
     }
+    //for(int i = 0; i < levels.get(currentLevel).npcCount; i++)
+    //{
+    //    Characters person = new NPC(width - 300+i, height / 2, color(255, 255, 0));
+    //    gameObjects.add(person);
+    //}
   }
 }
 
