@@ -1,22 +1,13 @@
 void setup()
 {
   size(1200, 700);
-  //Characters person = new Player('W', 'S', 'A', 'D', ' ', 200, height / 2, color(0, 255, 255));
-  //gameObjects.add(person);
-  Pistol pistol = new Pistol(width - 200, height / 2);
-  gameObjects.add(pistol);
-  Shotgun shotgun = new Shotgun(width/4, height / 2);
-  gameObjects.add(shotgun);
-  Rifle rifle = new Rifle(width - 50, height / 2);
-  gameObjects.add(rifle);
-
 }//End setup()
 
 //Maps stored in this String array
 String[] maps = {"map1.png","map2.png","map3.png"};
 String[] mapData = {"map1_info.txt","map1_info.txt","map1_info.txt"};
 int line;
-String type;
+float type; //Type of gameobject from txt file. 1.player 2.NPC 3.Pistol 4.Rifle 5.Shotgun
 float px;
 float py;
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
@@ -48,24 +39,39 @@ void loadLevels()
     Level level = new Level(maps[currentLevel],8);
     levels.add(level);
     loaded = true;
-    for (int i = 0 ; i < line ; i ++)
+    for (int i = 1 ; i < line ; i ++)
     {
       String[] parts = lines[i].split(",");
-      type = parts[0];
+      type = Float.parseFloat(parts[0]);
       println(type);
       px = Float.parseFloat(parts[1]);
       py = Float.parseFloat(parts[2]);
-      if(i == 0)
+      if(type == 1)
       {
         Characters person = new Player('W', 'S', 'A', 'D', ' ', px,py,color(0, 255, 255));
         gameObjects.add(person);
         println("player");
       }
-      else
+      else if(type == 2)
       {
         Characters person = new NPC(px, py, color(255, 255, 0));
         gameObjects.add(person);
         println("player");
+      }
+      else if(type == 3)
+      {
+        GameObject gun = new Pistol(px, py);
+        gameObjects.add(gun);
+      }
+      else if(type == 4)
+      {
+        GameObject gun = new Rifle(px, py);
+        gameObjects.add(gun);
+      }
+      else if(type == 5)
+      {
+        GameObject gun = new Shotgun(px, py);
+        gameObjects.add(gun);
       }
 
     }
