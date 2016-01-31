@@ -24,6 +24,7 @@ class Player extends Characters
   
   void update()
   {
+    text("Ammo: "+ammo, width*0.9f, 15);
     forward.x = sin(theta);
     forward.y = - cos(theta);
     forward.mult(speed);
