@@ -5,11 +5,10 @@ void setup()
 
 //Maps stored in this String array
 String[] maps = {"map1.png","map2.png","map3.png"};
-String[] mapData = {"map1_info.txt","map1_info.txt","map1_info.txt"};
+String[] mapData = {"map1_spawns.txt","map2_spawns.txt","map3_spawns.txt"};
+String[] mapWalls = {"map1_walls.txt","map2_walls.txt","map3_walls.txt"};
 
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
-
-//Level details stored here
 ArrayList<Level> levels = new ArrayList<Level>();
 
 int currentLevel=0;
@@ -24,19 +23,20 @@ void loadLevels()
   {
     currentLevel++;
     loaded = false;
+    //Remove all gameObjects at end of level
     for(int i = gameObjects.size() - 1 ; i >= 0;i--)
     {
       gameObjects.remove(i);
-    }
-  }
+    }//End for
+  }//End if
   if(loaded == false)
   {
     Level level = new Level(maps[currentLevel],8);
     levels.add(level);
     loaded = true;
-    levels.get(currentLevel).load(currentLevel,mapData[currentLevel]);
-  }
-}
+    levels.get(currentLevel).load(currentLevel,mapData[currentLevel],mapWalls[currentLevel]);
+  }//End if
+}//End loadLevels()
 
 void keyPressed()
 {
@@ -144,6 +144,37 @@ void checkCollisions()
             }//End else if
           }//End if
         }//End if
+        
+        if(other instanceof Walls)
+        {
+          if (go.pos.x > ((Walls)other).x1 && go.pos.x < ((Walls)other).x2 && go.pos.y > ((Walls)other).y1 && go.pos.y < ((Walls)other).y2)
+          {
+            go.pos.x =  go.pos.x+1;
+            if(abs(go.pos.x - ((Walls)other).x1) < abs(go.pos.y - ((Walls)other).y1) || abs(go.pos.x - ((Walls)other).x1) < abs(go.pos.y - ((Walls)other).y2) || abs(go.pos.x - ((Walls)other).x2) < abs(go.pos.y - ((Walls)other).y1) || abs(go.pos.x - ((Walls)other).x2) < abs(go.pos.y - ((Walls)other).y2)) 
+            {
+              if(go.pos.x > ((Walls)other).x1)
+              {
+                go.pos.x = ((Walls)other).x1;
+              }
+              if(go.pos.x < ((Walls)other).x2)
+              {
+                go.pos.x = ((Walls)other).x2;
+              }
+            }
+            else
+            {
+              if(go.pos.y > ((Walls)other).y1)
+              {
+                go.pos.y = ((Walls)other).y1;
+              }
+              if(go.pos.y < ((Walls)other).y2)
+              {
+                go.pos.y = ((Walls)other).y2;
+              }
+            }
+
+          }//End if
+        }
       }//End for
     }//End if
   }//End for

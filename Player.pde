@@ -6,6 +6,7 @@ class Player extends Characters
   char right;
   char fire;
   int ammo;
+  boolean shoot = false;
   
   Player(char move, char moveBack, char left, char right, char fire, float startX, float startY, color c)
   {
@@ -46,7 +47,10 @@ class Player extends Characters
     if (mouseButton == LEFT  && elapsed > 12 && ammo > 0 && weapon!="hands")
     {
       mouseButton=0;
-      if(weapon=="pistol")
+      shoot = ! shoot;
+      if(shoot)
+      {
+      if(weapon=="pistol" )
       { 
         Bullet bullet = new Bullet();
         bullet.pos.x = pos.x;
@@ -95,6 +99,7 @@ class Player extends Characters
        }//End if
         elapsed = 0;
         ammo --;
+      }
     }//End if
     
     //make player follow mouse

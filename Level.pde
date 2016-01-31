@@ -2,11 +2,14 @@ class Level
 {
   PImage map;
   String mapName;
+  String mapWalls;
   int npcCount;
   int currentLevel;
   float type; //Type of gameobject from txt file. 1.player 2.NPC 3.Pistol 4.Rifle 5.Shotgun
   float px;
   float py;
+  float px2;
+  float py2;
   String mapData;
   Level(String mapName, int npcCount)
   {
@@ -14,15 +17,18 @@ class Level
     this.npcCount = npcCount;
     map = loadImage(mapName);
   }
-  void load(int currentLevel, String mapData)
+  void load(int currentLevel, String mapData, String mapWalls)
   {
     this.currentLevel = currentLevel;
     this.mapData = mapData;
-    String[] lines = loadStrings(mapData);
+    this.mapWalls = mapWalls;
     
-    for (int i = 1 ; i < lines.length; i ++)
+    String[] mapDataLines = loadStrings(mapData);
+    String[] mapWallLines = loadStrings(mapWalls);
+    
+    for (int i = 1 ; i < mapDataLines.length; i ++)
     {
-      String[] parts = lines[i].split(",");
+      String[] parts = mapDataLines[i].split(",");
       type = Float.parseFloat(parts[0]);
       px = Float.parseFloat(parts[1]);
       py = Float.parseFloat(parts[2]);
@@ -51,6 +57,18 @@ class Level
         GameObject gun = new Shotgun(px, py);
         gameObjects.add(gun);
       }
+    }
+    for (int i = 1 ; i < mapWallLines.length; i ++)
+    {
+      String[] parts = mapWallLines[i].split(",");
+      px = Float.parseFloat(parts[0]);
+      py = Float.parseFloat(parts[1]);
+      px2 = Float.parseFloat(parts[2]);
+      py2 = Float.parseFloat(parts[3]);
+      
+      Walls wall = new Walls(px,py,px2,py2);
+      gameObjects.add (wall);
+      
     }
   }
 }
