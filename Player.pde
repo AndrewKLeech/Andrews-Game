@@ -63,7 +63,6 @@ class Player extends Characters
        }//End if
       if(weapon=="shotgun")
       {
-               
         Bullet bullet = new Bullet();
         bullet.pos.x = pos.x;
         bullet.pos.y = pos.y;
@@ -102,7 +101,7 @@ class Player extends Characters
         ammo --;
       }
     }//End if
-    
+
     //make player follow mouse
     //PI/2 added so front of player faces the mouse. Otherwise the player would face 90 degrees left of the mouse
     theta = atan2(mouseY- pos.y, mouseX -pos.x)+PI/2;
@@ -128,6 +127,4 @@ class Player extends Characters
     }//End if
     elapsed ++;
   }//End update()
-  
-
 }//End Player class

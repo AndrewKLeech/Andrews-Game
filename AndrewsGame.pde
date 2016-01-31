@@ -63,9 +63,28 @@ void draw()
     go.render();
   }//End for
   checkCollisions();
+  playerTracking();
 }//End draw()
 
-
+void playerTracking()
+{
+  for(int i = gameObjects.size() - 1 ; i >= 0;i --)
+  {
+    GameObject go = gameObjects.get(i);
+    if (go instanceof Player)
+    {
+      for(int j = gameObjects.size() -1; j >= 0;j --)
+      {
+        GameObject other = gameObjects.get(j);
+        if (other instanceof NPC)
+        {
+          ((NPC) other).facePlayer(go.pos.x, go.pos.y);
+        }
+        
+      }
+    }
+  }
+}
 void checkCollisions()
 {
   for(int i = gameObjects.size() - 1 ; i >= 0;i --)

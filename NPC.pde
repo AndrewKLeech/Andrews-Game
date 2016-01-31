@@ -8,7 +8,10 @@ class NPC extends Characters
   }//End NPC
 
   int elapsed = 12;
-  
+  void facePlayer(float x, float y)
+  {
+    theta = atan2(y- pos.y, x -pos.x)+PI/2;
+  }
   void update()
   {
     forward.x = sin(theta);
@@ -35,6 +38,8 @@ class NPC extends Characters
       pos.y = height-10;
     }//End if
     elapsed ++;
+    
+    
   }//End update()
 }//End NPC class
 
