@@ -53,7 +53,8 @@ void draw()
   background(0);
   loadLevels();
   background(levels.get(currentLevel).map);
-    
+      text("x: "+mouseX+" y: "+mouseY, 10, 15);
+
   for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
   {
     GameObject go = gameObjects.get(i);
