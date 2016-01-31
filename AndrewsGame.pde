@@ -168,7 +168,22 @@ void checkCollisions()
                 go.pos.y = ((Walls)other).y2;
             }
           }//End if
-        }
+        }//End if
+      }//End for
+    }//End if
+    if(go instanceof Bullet)
+    {
+      for(int j = gameObjects.size() -1; j >= 0;j --)
+      {
+        GameObject other = gameObjects.get(j);
+        
+        if(other instanceof Walls)
+        {
+          if (go.pos.x > ((Walls)other).x1 && go.pos.x < ((Walls)other).x2 && go.pos.y > ((Walls)other).y1 && go.pos.y < ((Walls)other).y2)
+          {
+            gameObjects.remove(go);
+          }//End if
+        }//End if
       }//End for
     }//End if
   }//End for
