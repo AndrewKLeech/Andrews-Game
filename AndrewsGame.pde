@@ -152,33 +152,20 @@ void checkCollisions()
             go.pos.x =  go.pos.x+1;
             if(abs(go.pos.x - ((Walls)other).x1) < abs(go.pos.y - ((Walls)other).y1) && abs(go.pos.x - ((Walls)other).x1) < abs(go.pos.y - ((Walls)other).y2) && abs(go.pos.x - ((Walls)other).x1) < abs(go.pos.x - ((Walls)other).x2) ) 
             {
-              if(go.pos.x > ((Walls)other).x1)
-              {
                 go.pos.x = ((Walls)other).x1;
-              }
             }
             if(abs(go.pos.x - ((Walls)other).x2) < abs(go.pos.y - ((Walls)other).y1) && abs(go.pos.x - ((Walls)other).x2) < abs(go.pos.y - ((Walls)other).y2) && abs(go.pos.x - ((Walls)other).x2) < abs(go.pos.x - ((Walls)other).x1) ) 
             {
-              if(go.pos.x < ((Walls)other).x2)
-              {
                 go.pos.x = ((Walls)other).x2;
-              }
             }
             if(abs(go.pos.y - ((Walls)other).y1) < abs(go.pos.x - ((Walls)other).x1) && abs(go.pos.y - ((Walls)other).y1) < abs(go.pos.x - ((Walls)other).x2) && abs(go.pos.y - ((Walls)other).y1) < abs(go.pos.y - ((Walls)other).y2) ) 
             {
-              if(go.pos.y > ((Walls)other).y1)
-              {
                 go.pos.y = ((Walls)other).y1;
-              }
             }
             if(abs(go.pos.y - ((Walls)other).y2) < abs(go.pos.x - ((Walls)other).x1) && abs(go.pos.y - ((Walls)other).y2) < abs(go.pos.x - ((Walls)other).x2) && abs(go.pos.y - ((Walls)other).y2) < abs(go.pos.y - ((Walls)other).y1) )
             {
-              if(go.pos.y < ((Walls)other).y2)
-              {
                 go.pos.y = ((Walls)other).y2;
-              }
             }
-
           }//End if
         }
       }//End for
