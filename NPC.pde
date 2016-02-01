@@ -1,10 +1,12 @@
 class NPC extends Characters
 { 
+  Sight sight = new Sight(pos.x, pos.y);
   NPC(float startX, float startY, color c)
   {
     super(startX, startY);
     this.c = c;
     lives = 1;
+    
   }//End NPC
 
   int elapsed = 12;
@@ -14,6 +16,9 @@ class NPC extends Characters
   }
   void update()
   {
+    sight.look(theta);
+    sight.update();
+    sight.render();
     forward.x = sin(theta);
     forward.y = - cos(theta);
     forward.mult(speed);

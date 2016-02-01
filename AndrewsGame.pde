@@ -70,17 +70,23 @@ void playerTracking()
 {
   for(int i = gameObjects.size() - 1 ; i >= 0;i --)
   {
-    GameObject go = gameObjects.get(i);
-    if (go instanceof Player)
+    GameObject player = gameObjects.get(i);
+    if (player instanceof Player)
     {
       for(int j = gameObjects.size() -1; j >= 0;j --)
       {
-        GameObject other = gameObjects.get(j);
-        if (other instanceof NPC)
+        GameObject npc = gameObjects.get(j);
+        if (npc instanceof NPC)
         {
-          ((NPC) other).facePlayer(go.pos.x, go.pos.y);
+          for(int k = gameObjects.size() -1; k >= 0; k --)
+          {
+            GameObject wall = gameObjects.get(k);
+            if (wall instanceof Walls)
+            {
+              ((NPC) npc).facePlayer(player.pos.x, player.pos.y);
+            }
+          }
         }
-        
       }
     }
   }
