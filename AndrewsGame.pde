@@ -91,6 +91,11 @@ void playerTracking()
     }
   }
 }
+
+
+
+
+
 void checkCollisions()
 {
   for(int i = gameObjects.size() - 1 ; i >= 0;i --)
