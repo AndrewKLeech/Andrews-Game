@@ -1,6 +1,5 @@
 class NPC extends Characters
 { 
-  Sight sight = new Sight(pos.x, pos.y);
   NPC(float startX, float startY, color c)
   {
     super(startX, startY);
@@ -9,16 +8,24 @@ class NPC extends Characters
     
   }//End NPC
 
-  int elapsed = 12;
-  void facePlayer(float x, float y)
+
+  void facePlayer(PVector playerPos, boolean inSight)
   {
-    theta = atan2(y- pos.y, x -pos.x)+PI/2;
+    if(inSight)
+    {
+
+      if(playerPos.dist(pos)<200)
+      {
+           line(pos.x, pos.y, playerPos.x, playerPos.y);
+      theta = atan2(playerPos.y- pos.y, playerPos.x -pos.x)+PI/2;
+      }
+    }
+    else
+    {
+    }
   }
   void update()
   {
-    sight.look(theta);
-    sight.update();
-    sight.render();
     forward.x = sin(theta);
     forward.y = - cos(theta);
     forward.mult(speed);
@@ -42,7 +49,6 @@ class NPC extends Characters
     {
       pos.y = height-10;
     }//End if
-    elapsed ++;
     
     
   }//End update()

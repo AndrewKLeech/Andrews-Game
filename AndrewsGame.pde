@@ -35,6 +35,11 @@ void loadLevels()
     levels.add(level);
     loaded = true;
     levels.get(currentLevel).load(currentLevel,mapData[currentLevel],mapWalls[currentLevel]);
+    for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
+  {
+    println(gameObjects.get(i));
+    
+  }
   }//End if
 }//End loadLevels()
 
@@ -54,6 +59,7 @@ void draw()
   loadLevels();
   background(levels.get(currentLevel).map);
       text("x: "+mouseX+" y: "+mouseY, 10, 15);
+      text(frameRate, 100,15);
       
 
   for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
@@ -68,29 +74,25 @@ void draw()
 
 void playerTracking()
 {
-  for(int i = gameObjects.size() - 1 ; i >= 0;i --)
+  
+  GameObject player = gameObjects.get(0);//This will always be the player
+  
+  for(int j = 1; j <= gameObjects.size() -1;j ++)
   {
-    GameObject player = gameObjects.get(i);
-    if (player instanceof Player)
+    GameObject npc = gameObjects.get(j);
+    if (npc instanceof NPC)
     {
-      for(int j = gameObjects.size() -1; j >= 0;j --)
+      for(int k = gameObjects.size() -1; k >= 0;k --)
       {
-        GameObject npc = gameObjects.get(j);
-        if (npc instanceof NPC)
+        GameObject wall = gameObjects.get(k);
+        if (wall instanceof Walls)
         {
-          for(int k = gameObjects.size() -1; k >= 0; k --)
-          {
-            GameObject wall = gameObjects.get(k);
-            if (wall instanceof Walls)
-            {
-              ((NPC) npc).facePlayer(player.pos.x, player.pos.y);
-            }
-          }
-        }
-      }
-    }
-  }
-}
+          ((NPC) npc).facePlayer(player.pos,true);
+        }//End if
+      }//End for
+    }//End if
+  }//End for
+}//End playerTracking()
 
 
 
