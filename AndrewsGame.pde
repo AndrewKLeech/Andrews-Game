@@ -69,34 +69,7 @@ void draw()
     go.render();
   }//End for
   checkCollisions();
-  playerTracking();
 }//End draw()
-
-void playerTracking()
-{
-  
-  GameObject player = gameObjects.get(0);//This will always be the player
-  
-  for(int j = 1; j <= gameObjects.size() -1;j ++)
-  {
-    GameObject npc = gameObjects.get(j);
-    if (npc instanceof NPC)
-    {
-      for(int k = gameObjects.size() -1; k >= 0;k --)
-      {
-        GameObject wall = gameObjects.get(k);
-        if (wall instanceof Walls)
-        {
-          ((NPC) npc).facePlayer(player.pos,true);
-        }//End if
-      }//End for
-    }//End if
-  }//End for
-}//End playerTracking()
-
-
-
-
 
 void checkCollisions()
 {

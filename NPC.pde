@@ -8,22 +8,6 @@ class NPC extends Characters
     
   }//End NPC
 
-
-  void facePlayer(PVector playerPos, boolean inSight)
-  {
-    if(inSight)
-    {
-
-      if(playerPos.dist(pos)<200)
-      {
-           line(pos.x, pos.y, playerPos.x, playerPos.y);
-      theta = atan2(playerPos.y- pos.y, playerPos.x -pos.x)+PI/2;
-      }
-    }
-    else
-    {
-    }
-  }
   void update()
   {
     forward.x = sin(theta);
