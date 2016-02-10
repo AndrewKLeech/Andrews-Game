@@ -93,6 +93,9 @@ class NPC extends Characters
            moving = false;
            if(elapsed > 50)
            {
+             AudioSnippet punch = sounds.get(3);
+            punch.rewind();
+            punch.play();
             ((Player)gameObjects.get(0)).health--;
             elapsed = 0;
            }

@@ -88,8 +88,12 @@ class Player extends Characters
           GameObject other = gameObjects.get(i);
           if(other instanceof NPC)
           {
+            
             if (pos.dist(other.pos) < w)
             {
+              AudioSnippet punch = sounds.get(3);
+            punch.rewind();
+            punch.play();
             ((NPC) other).health--;
             }
           }
@@ -98,55 +102,61 @@ class Player extends Characters
       if(ammo > 0)
       {
         AudioSnippet fire = sounds.get(0);
-      fire.rewind();
-      fire.play();
-      if(weapon=="pistol" )
-      { 
-        Bullet bullet = new Bullet();
-        bullet.pos.x = pos.x;
-        bullet.pos.y = pos.y;
-        bullet.pos.add(PVector.mult(forward, 6));
-        bullet.c = c;
-        bullet.theta = theta;
-        gameObjects.add(bullet);
-       }//End if
-      if(weapon=="shotgun")
+        fire.rewind();
+        fire.play();
+        if(weapon=="pistol" )
+        { 
+          Bullet bullet = new Bullet();
+          bullet.pos.x = pos.x;
+          bullet.pos.y = pos.y;
+          bullet.pos.add(PVector.mult(forward, 6));
+          bullet.c = c;
+          bullet.theta = theta;
+          gameObjects.add(bullet);
+         }//End if
+        if(weapon=="shotgun")
+        {
+          Bullet bullet = new Bullet();
+          bullet.pos.x = pos.x;
+          bullet.pos.y = pos.y;
+          bullet.pos.add(PVector.mult(forward, 6));
+          bullet.c = c;
+          bullet.theta = theta;
+          gameObjects.add(bullet);
+          
+          Bullet bullet2 = new Bullet();
+          bullet2.pos.x = pos.x;
+          bullet2.pos.y = pos.y;
+          bullet2.pos.add(PVector.mult(forward, 6));
+          bullet2.c = c;
+          bullet2.theta = theta -0.1;
+          gameObjects.add(bullet2);
+          
+          Bullet bullet3 = new Bullet();
+          bullet3.pos.x = pos.x;
+          bullet3.pos.y = pos.y;
+          bullet3.pos.add(PVector.mult(forward, 6));
+          bullet3.c = c;
+          bullet3.theta = theta +0.1;
+          gameObjects.add(bullet3);
+        }//End if
+        if(weapon=="rifle")
+        { 
+          Bullet bullet = new Bullet();
+          bullet.pos.x = pos.x;
+          bullet.pos.y = pos.y;
+          bullet.pos.add(PVector.mult(forward, 6));
+          bullet.c = c;
+          bullet.theta = theta;
+          gameObjects.add(bullet);
+         }//End if
+         ammo --;
+      }
+      else
       {
-        Bullet bullet = new Bullet();
-        bullet.pos.x = pos.x;
-        bullet.pos.y = pos.y;
-        bullet.pos.add(PVector.mult(forward, 6));
-        bullet.c = c;
-        bullet.theta = theta;
-        gameObjects.add(bullet);
-        
-        Bullet bullet2 = new Bullet();
-        bullet2.pos.x = pos.x;
-        bullet2.pos.y = pos.y;
-        bullet2.pos.add(PVector.mult(forward, 6));
-        bullet2.c = c;
-        bullet2.theta = theta -0.1;
-        gameObjects.add(bullet2);
-        
-        Bullet bullet3 = new Bullet();
-        bullet3.pos.x = pos.x;
-        bullet3.pos.y = pos.y;
-        bullet3.pos.add(PVector.mult(forward, 6));
-        bullet3.c = c;
-        bullet3.theta = theta +0.1;
-        gameObjects.add(bullet3);
-      }//End if
-      if(weapon=="rifle")
-      { 
-        Bullet bullet = new Bullet();
-        bullet.pos.x = pos.x;
-        bullet.pos.y = pos.y;
-        bullet.pos.add(PVector.mult(forward, 6));
-        bullet.c = c;
-        bullet.theta = theta;
-        gameObjects.add(bullet);
-       }//End if
-       ammo --;
+        AudioSnippet empty = sounds.get(1);
+        empty.rewind();
+        empty.play();
       }
         elapsed = 0;
         

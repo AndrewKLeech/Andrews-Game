@@ -1,6 +1,8 @@
 import ddf.minim.*;
 AudioSnippet fire;
 AudioSnippet empty;
+AudioSnippet pickup;
+AudioSnippet punch;
 Minim minim;
 void setup()
 {
@@ -12,6 +14,10 @@ void setup()
   sounds.add(fire);
   empty = minim.loadSnippet("empty.mp3");
   sounds.add(empty);
+  pickup = minim.loadSnippet("pickup.mp3");
+  sounds.add(pickup);
+  punch = minim.loadSnippet("punch.mp3");
+  sounds.add(punch);
 }//End setup()
 
 //Maps stored in this String array
@@ -213,6 +219,9 @@ void checkCollisions()
           {
             if (go instanceof Player)
             {
+              AudioSnippet pickup = sounds.get(2);
+              pickup.rewind();
+              pickup.play();
               ((Characters)go).weapon = "pistol";
               ((Player)go).ammo = 8;
               gameObjects.remove(other);
@@ -232,6 +241,9 @@ void checkCollisions()
           {
             if (go instanceof Player)
             {
+              AudioSnippet pickup = sounds.get(2);
+              pickup.rewind();
+              pickup.play();
               ((Characters)go).weapon = "shotgun";
               ((Player)go).ammo = 4;
               gameObjects.remove(other);
@@ -251,6 +263,9 @@ void checkCollisions()
           {
             if (go instanceof Player)
             {
+              AudioSnippet pickup = sounds.get(2);
+              pickup.rewind();
+              pickup.play();
               ((Characters)go).weapon = "rifle";
               ((Player)go).ammo = 20;
               gameObjects.remove(other);
