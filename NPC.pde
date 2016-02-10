@@ -68,15 +68,14 @@ class NPC extends Characters
        //Move towards player
        pos.add(forward);
     }
-    
-    if (elapsed > 12 && weapon!="hands")
+    if (elapsed > 12 && weapon!="hands" && detected )
     {
       if(weapon=="pistol" )
       { 
         Bullet bullet = new Bullet();
         bullet.pos.x = pos.x;
         bullet.pos.y = pos.y;
-        bullet.pos.add(PVector.mult(forward, 6));
+        bullet.pos.add(PVector.mult(forward, 15));
         bullet.c = c;
         bullet.theta = theta;
         gameObjects.add(bullet);
