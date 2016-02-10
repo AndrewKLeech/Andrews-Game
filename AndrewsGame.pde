@@ -32,16 +32,24 @@ boolean[] keys = new boolean[512];
 
 void loadLevels()
 { 
+  if(maps.length <= currentLevel)
+  {
+    screen = 2;
+    println("end game");
+  }
   //If all npc's are dead go to next level
   if(loaded && levels.get(currentLevel).npcCount == 0 && currentLevel<maps.length-1)
   {
-    currentLevel++;
-    loaded = false;
     //Remove all gameObjects at end of level
     for(int i = gameObjects.size() - 1 ; i >= 0;i--)
     {
       gameObjects.remove(i);
     }//End for
+
+    currentLevel++;
+    
+    loaded = false;
+
   }//End if
   if(loaded)
   {
@@ -58,6 +66,7 @@ void loadLevels()
       }//End for
       loaded = false;
       levels.remove(currentLevel);
+    
       
     }
   }
@@ -68,11 +77,6 @@ void loadLevels()
     loaded = true;
     levels.get(currentLevel).load(currentLevel,mapData[currentLevel],mapWalls[currentLevel]);
   }//End if
-  
-  if(maps.length <= currentLevel)
-  {
-    println("end game");
-  }
 }//End loadLevels()
 
 void keyPressed()
@@ -153,9 +157,19 @@ void draw()
       gameScreen();
       break;
     }
+    case 2:
+    {
+      endScreen();
+      break;
+    }
   }
 }//End draw()
 
+
+void endScreen()
+{
+  text("you win", 500,500);
+}
 void checkCollisions()
 {
   for(int i = gameObjects.size() - 1 ; i >= 0;i --)
@@ -175,10 +189,10 @@ void checkCollisions()
             gameObjects.remove(other);
             //if this isnt here array gets broken
             j--;
-            if(go instanceof NPC)
+            if(go instanceof Characters)
             {
               
-              ((NPC)go).health -= 2;
+              ((Characters)go).health -= 2;
             }
           }//End if
         }//End if

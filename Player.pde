@@ -31,6 +31,10 @@ class Player extends Characters
   
   void update()
   {
+    if(health <= 0)
+    {
+      gameObjects.remove(this);
+    }
     text("Ammo: "+ammo, width*0.9f, 15);
     forward.x = sin(theta);
     forward.y = - cos(theta);

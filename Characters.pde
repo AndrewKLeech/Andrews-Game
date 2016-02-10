@@ -4,7 +4,7 @@ abstract class Characters extends GameObject
   boolean moving = false;
   int leg=1;
   String weapon = "hands";
-  
+    int health = 2;
   Characters(float startX, float startY)
   {
     super(startX, startY, 50);     

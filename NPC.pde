@@ -10,7 +10,6 @@ class NPC extends Characters
   }//End NPC
 
   int inSight = 0;
-  int health = 2;
   boolean detected = false;
   boolean detectorAlive;
   int elapsed = 12;
@@ -86,12 +85,18 @@ class NPC extends Characters
        {
          if(pos.dist(gameObjects.get(0).pos) > 40)
          {
-         pos.add(forward);
-         moving=true;
+           pos.add(forward);
+           moving=true;
          }
          else
          {
            moving = false;
+           if(elapsed > 50)
+           {
+            ((Player)gameObjects.get(0)).health--;
+            elapsed = 0;
+           }
+           
          }
        }
        detectors.remove(0);
