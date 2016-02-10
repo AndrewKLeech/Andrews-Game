@@ -27,16 +27,17 @@ ArrayList<AudioSnippet> sounds = new ArrayList<AudioSnippet>();
 int currentLevel=0;
 boolean loaded = false;
 //0 is menu, 1 is game screen
-int screen = 0;
+int screen = 2;
 boolean[] keys = new boolean[512];
 
 void loadLevels()
 { 
-  if(maps.length <= currentLevel)
+    if(maps.length <= currentLevel+1)
   {
     screen = 2;
-    println("end game");
   }
+  else
+  {
   //If all npc's are dead go to next level
   if(loaded && levels.get(currentLevel).npcCount == 0 && currentLevel<maps.length-1)
   {
@@ -66,9 +67,8 @@ void loadLevels()
       }//End for
       loaded = false;
       levels.remove(currentLevel);
-    
-      
     }
+  }
   }
   if(loaded == false)
   {
@@ -143,6 +143,18 @@ void gameScreen()
   }//End for
   checkCollisions();
 }
+
+void endScreen()
+{
+  background(255);
+  textSize(100);
+  fill(0);
+  text("You Win", 400,350);
+  if (frameCount % 60 == 0)
+  {
+          screen = 0;
+  }//End if
+}
 void draw()
 {
   switch(screen)
@@ -165,11 +177,6 @@ void draw()
   }
 }//End draw()
 
-
-void endScreen()
-{
-  text("you win", 500,500);
-}
 void checkCollisions()
 {
   for(int i = gameObjects.size() - 1 ; i >= 0;i --)
