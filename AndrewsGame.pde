@@ -43,13 +43,36 @@ void loadLevels()
       gameObjects.remove(i);
     }//End for
   }//End if
+  if(loaded)
+  {
+    if(gameObjects.get(0) instanceof Player)
+    {
+      
+    }
+    else
+    {
+      //Remove all gameObjects at end of level
+       for(int i = gameObjects.size() - 1 ; i >= 0;i--)
+      {  
+        gameObjects.remove(i);
+      }//End for
+      loaded = false;
+      levels.remove(currentLevel);
+      
+    }
+  }
   if(loaded == false)
   {
-    Level level = new Level(maps[currentLevel],8);
+    Level level = new Level(maps[currentLevel]);
     levels.add(level);
     loaded = true;
     levels.get(currentLevel).load(currentLevel,mapData[currentLevel],mapWalls[currentLevel]);
   }//End if
+  
+  if(maps.length <= currentLevel)
+  {
+    println("end game");
+  }
 }//End loadLevels()
 
 void keyPressed()
@@ -140,8 +163,12 @@ void checkCollisions()
             gameObjects.remove(other);
             //if this isnt here array gets broken
             j--;
-            gameObjects.remove(go);
-            levels.get(currentLevel).npcCount--;
+              gameObjects.remove(go);
+            if(go instanceof NPC)
+            {
+              
+              levels.get(currentLevel).npcCount--;
+            }
           }//End if
         }//End if
         

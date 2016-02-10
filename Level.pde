@@ -11,10 +11,9 @@ class Level
   float px2;
   float py2;
   String mapData;
-  Level(String mapName, int npcCount)
+  Level(String mapName)
   {
     this.mapName = mapName;
-    this.npcCount = npcCount;
     map = loadImage(mapName);
   }
   void load(int currentLevel, String mapData, String mapWalls)
@@ -34,13 +33,14 @@ class Level
       py = Float.parseFloat(parts[2]);
       if(type == 1)
       {
-        Characters person = new Player('W', 'S', 'A', 'D', ' ', px,py,color(0, 255, 255));
+        Characters person = new Player('W', 'S', 'A', 'D', ' ','Q', px,py,color(0, 255, 255));
         gameObjects.add(person);
       }
       else if(type == 2)
       {
         Characters person = new NPC(px, py, color(255, 255, 0));
         gameObjects.add(person);
+        npcCount++;
       }
       else if(type == 3)
       {

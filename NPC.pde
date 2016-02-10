@@ -21,6 +21,7 @@ class NPC extends Characters
   {
     if(health <= 0)
     {
+      levels.get(currentLevel).npcCount--;
       gameObjects.remove(this);
     }
     if(detectorAlive == false)
@@ -53,9 +54,20 @@ class NPC extends Characters
       detected = true;
         //Face player
        theta = atan2(gameObjects.get(0).pos.y- pos.y, gameObjects.get(0).pos.x -pos.x)+PI/2;
-       //Move towards player
-       pos.add(forward);
-       moving=true;
+       //Move towards player#
+       if(weapon != "hands")
+       {
+         if(pos.dist(gameObjects.get(0).pos) > 200)
+         {
+           pos.add(forward);
+           moving=true;
+         }
+       }
+       else
+       {
+         pos.add(forward);
+         moving=true;
+       }
        detectors.remove(0);
        detectorAlive = false;
        
@@ -66,6 +78,7 @@ class NPC extends Characters
        detectorAlive = false;
        detected = false;
        moving=false;
+       elapsed = 0;
     }
     else if(inSight == 0 && detected == true)
     {
@@ -73,10 +86,22 @@ class NPC extends Characters
         //Face player
        theta = atan2(gameObjects.get(0).pos.y- pos.y, gameObjects.get(0).pos.x -pos.x)+PI/2;
        //Move towards player
-       pos.add(forward);
-       moving=true;
+       if(weapon != "hands")
+       {
+         if(pos.dist(gameObjects.get(0).pos) > 200)
+         {
+           pos.add(forward);
+           moving=true;
+         }
+       }
+       else
+       {
+           pos.add(forward);
+           moving=true;
+       }
     }
-    if (elapsed > 50 && detected )
+    
+    /*if (elapsed > 100 && detected )
     {
       if(weapon=="pistol" )
       { 
@@ -87,6 +112,7 @@ class NPC extends Characters
         bullet.c = c;
         bullet.theta = theta;
         gameObjects.add(bullet);
+                elapsed = 0;
        }//End if
       if(weapon=="shotgun")
       {
@@ -113,6 +139,7 @@ class NPC extends Characters
         bullet3.c = c;
         bullet3.theta = theta +0.1;
         gameObjects.add(bullet3);
+                elapsed = 0;
       }//End if
       if(weapon=="rifle")
       { 
@@ -123,9 +150,10 @@ class NPC extends Characters
         bullet.c = c;
         bullet.theta = theta;
         gameObjects.add(bullet);
+                elapsed = 10;
        }//End if
-        elapsed = 0;
-    }//End if
+
+    }//End if*/
     
     if (pos.x < 10)
     {

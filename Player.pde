@@ -5,13 +5,14 @@ class Player extends Characters
   char moveLeft;
   char moveRight;
   char fire;
+  char drop;
   int ammo;
   boolean shoot = false;
   PVector left;
   PVector right;
 
   
-  Player(char move, char moveBack, char moveLeft, char moveRight, char fire, float startX, float startY, color c)
+  Player(char move, char moveBack, char moveLeft, char moveRight, char fire, char drop, float startX, float startY, color c)
   {
     super(startX, startY);   
     this.move = move;
@@ -19,6 +20,7 @@ class Player extends Characters
     this.moveLeft = moveLeft;
     this.moveRight = moveRight;
     this.fire = fire;
+    this.drop = drop;
     this.c = c;
     lives = 10;
     left = new PVector(0, 0);
@@ -63,6 +65,11 @@ class Player extends Characters
     if (keys[moveRight])
     {
       pos.add(right);
+    }//End if
+    if (keys[drop])
+    {
+      weapon = "hands";
+      ammo = 0;
     }//End if
     if (mouseButton == LEFT  && elapsed > 12)
     {
