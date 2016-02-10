@@ -2,22 +2,26 @@ class Player extends Characters
 {
   char move;
   char moveBack;
-  char left;
-  char right;
+  char moveLeft;
+  char moveRight;
   char fire;
   int ammo;
   boolean shoot = false;
+  PVector left;
+  PVector right;
   
-  Player(char move, char moveBack, char left, char right, char fire, float startX, float startY, color c)
+  Player(char move, char moveBack, char moveLeft, char moveRight, char fire, float startX, float startY, color c)
   {
     super(startX, startY);   
     this.move = move;
     this.moveBack = moveBack;
-    this.left = left;
-    this.right = right;
+    this.moveLeft = moveLeft;
+    this.moveRight = moveRight;
     this.fire = fire;
     this.c = c;
     lives = 10;
+    left = new PVector(0, 0);
+    right = new PVector(0, 0);
   }//End Player
 
   int elapsed = 12;
@@ -31,6 +35,12 @@ class Player extends Characters
     back.x = -sin(theta);
     back.y = cos(theta);
     back.mult(speed);
+    left.x = -cos(theta);
+    left.y = -sin(theta);
+    left.mult(speed);
+    right.x = cos(theta);
+    right.y = sin(theta);
+    right.mult(speed);
     
     if (keys[move])
     {
@@ -44,6 +54,14 @@ class Player extends Characters
     if (keys[moveBack])
     {
       pos.add(back);
+    }//End if
+    if (keys[moveLeft])
+    {
+      pos.add(left);
+    }//End if
+    if (keys[moveRight])
+    {
+      pos.add(right);
     }//End if
     if (mouseButton == LEFT  && elapsed > 12 && ammo > 0 && weapon!="hands")
     {
