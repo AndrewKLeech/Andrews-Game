@@ -13,3 +13,14 @@
 <li>Different levels that have unique maps</li>
 <li>A variety of guns/weapons for both the player character can enemies to use</li>
 </ul>
+
+<h2>Controls</h2>
+<ul>
+<li>W: Move towards mouse</li>
+<li>S: Move away from mouse</li>
+<li>A: Move clockwise</li>
+<li>D: Move anticlockwise</li>
+<li>Q: Drop gun</li>
+<li>Left mouse button: Fire/Punch</li>
+<li>Aim with mouse</li>
+</ul>
