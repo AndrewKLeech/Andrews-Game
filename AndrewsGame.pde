@@ -1,19 +1,20 @@
 void setup()
 {
   size(1200, 700);
+  menuImage = loadImage("menu.png");
 }//End setup()
 
 //Maps stored in this String array
 String[] maps = {"map1.png","map2.png","map3.png"};
 String[] mapData = {"map1_spawns.txt","map2_spawns.txt","map3_spawns.txt"};
 String[] mapWalls = {"map1_walls.txt","map2_walls.txt","map3_walls.txt"};
-
+PImage menuImage;
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 ArrayList<Level> levels = new ArrayList<Level>();
 
 int currentLevel=0;
 boolean loaded = false;
-
+int screen = 0;
 boolean[] keys = new boolean[512];
 
 void loadLevels()
@@ -53,13 +54,28 @@ void keyReleased()
   keys[keyCode] = false;
 }
 
-void draw()
+void menuScreen()
+{
+  background(menuImage);
+  line(450,345,780,420);
+  textSize(50);
+  text("PLAY", 555, 400);
+  textSize(10);
+  if(mouseX<780 && mouseX>450 && mouseY>345 && mouseY<420 && mouseButton == LEFT)
+  {
+    mouseButton = 0;
+    screen = 1;
+    println("here");
+  }
+}
+
+void gameScreen()
 {
   background(0);
   loadLevels();
   background(levels.get(currentLevel).map);
-      text("x: "+mouseX+" y: "+mouseY, 10, 15);
-      text(frameRate, 100,15);
+  text("x: "+mouseX+" y: "+mouseY, 10, 15);
+  text(frameRate, 100,15);
       
 
   for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
@@ -69,6 +85,22 @@ void draw()
     go.render();
   }//End for
   checkCollisions();
+}
+void draw()
+{
+  switch(screen)
+  {
+    case 0:
+    {
+      menuScreen();
+      break;
+    }
+    case 1:
+    {
+      gameScreen();
+      break;
+    }
+  }
 }//End draw()
 
 void checkCollisions()
