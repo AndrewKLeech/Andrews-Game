@@ -90,10 +90,12 @@ void menuScreen()
   background(menuImage);
   textSize(50);
   text("PLAY", 555, 400);
-  textSize(10);
+  text("EXIT", 555, 515);
+  
   if(mouseX<780 && mouseX>450 && mouseY>345 && mouseY<420)
   {
     fill(0);
+     text("PLAY", 555, 400);
     if(mouseButton == LEFT)
     {
       AudioSnippet fire = sounds.get(0);
@@ -103,11 +105,24 @@ void menuScreen()
       mouseButton = 0;
       screen = 1;
     }
+    fill(255);
+  }
+  else if(mouseX<780 && mouseX>450 && mouseY>455 && mouseY<535)
+  {
+        fill(0);
+         text("EXIT", 555, 515);
+    if(mouseButton == LEFT)
+    {
+      mouseButton = 0;
+      exit();
+    }
+    fill(255);
   }
   else
   {
     fill(255);
   }
+  textSize(10);
 }
 
 void gameScreen()
