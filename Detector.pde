@@ -32,7 +32,7 @@ class Detector extends GameObject
     }//End if
   }//End if
   
-  boolean inSight()
+  int inSight()
   {
      for(int i = gameObjects.size() - 1 ; i >= 0;i --)
     {
@@ -41,11 +41,18 @@ class Detector extends GameObject
       {
         if (pos.x > ((Walls)other).x1 && pos.x < ((Walls)other).x2 && pos.y > ((Walls)other).y1 && pos.y < ((Walls)other).y2)
           {
-            return false;
+            return 2;
           }//End if
       }
+      if (other instanceof Player)
+      {
+         if (pos.dist(other.pos) < halfW)
+          {
+            return 1;
+          }
+      }
     }
-    return true;
+    return 0;
         
   }
 }//End Bullet class
