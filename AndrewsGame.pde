@@ -178,11 +178,10 @@ void checkCollisions()
             gameObjects.remove(other);
             //if this isnt here array gets broken
             j--;
-              gameObjects.remove(go);
             if(go instanceof NPC)
             {
               
-              levels.get(currentLevel).npcCount--;
+              ((NPC)go).health -= 2;
             }
           }//End if
         }//End if

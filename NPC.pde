@@ -22,6 +22,21 @@ class NPC extends Characters
     if(health <= 0)
     {
       levels.get(currentLevel).npcCount--;
+      if(weapon == "pistol")
+      {
+        GameObject weaponDrop = new Pistol(pos.x,pos.y);
+        gameObjects.add(weaponDrop);
+      }
+      if(weapon == "rifle")
+      {
+        GameObject weaponDrop = new Rifle(pos.x,pos.y);
+        gameObjects.add(weaponDrop);
+      }
+      if(weapon == "shotgun")
+      {
+        GameObject weaponDrop = new Shotgun(pos.x,pos.y);
+        gameObjects.add(weaponDrop);
+      }
       gameObjects.remove(this);
     }
     if(detectorAlive == false)
@@ -101,7 +116,7 @@ class NPC extends Characters
        }
     }
     
-    /*if (elapsed > 100 && detected )
+    if (elapsed > 100 && detected )
     {
       if(weapon=="pistol" )
       { 
@@ -153,7 +168,7 @@ class NPC extends Characters
                 elapsed = 10;
        }//End if
 
-    }//End if*/
+    }//End if
     
     if (pos.x < 10)
     {
