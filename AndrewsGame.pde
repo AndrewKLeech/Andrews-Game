@@ -95,6 +95,8 @@ void checkCollisions()
           }//End if
         }//End if
         
+        
+        //Weapon pickups
         //Pistol
         if (other instanceof Pistol)
         {
@@ -152,6 +154,7 @@ void checkCollisions()
           }//End if
         }//End if
         
+        //If a character hits a wall stop it from walking through it
         if(other instanceof Walls)
         {
           if (go.pos.x > ((Walls)other).x1 && go.pos.x < ((Walls)other).x2 && go.pos.y > ((Walls)other).y1 && go.pos.y < ((Walls)other).y2)
@@ -177,6 +180,8 @@ void checkCollisions()
         }//End if
       }//End for
     }//End if
+    
+    //If a bullet hits a wall remove bullet
     if(go instanceof Bullet)
     {
       for(int j = gameObjects.size() -1; j >= 0;j --)

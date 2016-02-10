@@ -50,6 +50,7 @@ class NPC extends Characters
        theta = atan2(gameObjects.get(0).pos.y- pos.y, gameObjects.get(0).pos.x -pos.x)+PI/2;
        //Move towards player
        pos.add(forward);
+       moving=true;
        detectors.remove(0);
        detectorAlive = false;
        
@@ -59,6 +60,7 @@ class NPC extends Characters
       detectors.remove(0);
        detectorAlive = false;
        detected = false;
+       moving=false;
     }
     else if(inSight == 0 && detected == true)
     {
@@ -67,6 +69,7 @@ class NPC extends Characters
        theta = atan2(gameObjects.get(0).pos.y- pos.y, gameObjects.get(0).pos.x -pos.x)+PI/2;
        //Move towards player
        pos.add(forward);
+       moving=true;
     }
     if (elapsed > 50 && weapon!="hands" && detected )
     {
