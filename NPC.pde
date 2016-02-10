@@ -68,7 +68,7 @@ class NPC extends Characters
        //Move towards player
        pos.add(forward);
     }
-    if (elapsed > 12 && weapon!="hands" && detected )
+    if (elapsed > 50 && weapon!="hands" && detected )
     {
       if(weapon=="pistol" )
       { 
@@ -85,7 +85,7 @@ class NPC extends Characters
         Bullet bullet = new Bullet();
         bullet.pos.x = pos.x;
         bullet.pos.y = pos.y;
-        bullet.pos.add(PVector.mult(forward, 6));
+        bullet.pos.add(PVector.mult(forward, 15));
         bullet.c = c;
         bullet.theta = theta;
         gameObjects.add(bullet);
@@ -93,7 +93,7 @@ class NPC extends Characters
         Bullet bullet2 = new Bullet();
         bullet2.pos.x = pos.x;
         bullet2.pos.y = pos.y;
-        bullet2.pos.add(PVector.mult(forward, 6));
+        bullet2.pos.add(PVector.mult(forward, 15));
         bullet2.c = c;
         bullet2.theta = theta -0.1;
         gameObjects.add(bullet2);
@@ -101,7 +101,7 @@ class NPC extends Characters
         Bullet bullet3 = new Bullet();
         bullet3.pos.x = pos.x;
         bullet3.pos.y = pos.y;
-        bullet3.pos.add(PVector.mult(forward, 6));
+        bullet3.pos.add(PVector.mult(forward, 15));
         bullet3.c = c;
         bullet3.theta = theta +0.1;
         gameObjects.add(bullet3);
@@ -111,7 +111,7 @@ class NPC extends Characters
         Bullet bullet = new Bullet();
         bullet.pos.x = pos.x;
         bullet.pos.y = pos.y;
-        bullet.pos.add(PVector.mult(forward, 6));
+        bullet.pos.add(PVector.mult(forward, 15));
         bullet.c = c;
         bullet.theta = theta;
         gameObjects.add(bullet);
