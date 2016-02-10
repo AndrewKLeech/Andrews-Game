@@ -27,7 +27,7 @@ ArrayList<AudioSnippet> sounds = new ArrayList<AudioSnippet>();
 int currentLevel=0;
 boolean loaded = false;
 //0 is menu, 1 is game screen
-int screen = 2;
+int screen = 0;
 boolean[] keys = new boolean[512];
 
 void loadLevels()
