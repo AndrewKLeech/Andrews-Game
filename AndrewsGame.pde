@@ -1,5 +1,6 @@
 import ddf.minim.*;
 AudioSnippet fire;
+AudioSnippet empty;
 Minim minim;
 void setup()
 {
@@ -8,10 +9,10 @@ void setup()
   //sounds
   minim = new Minim(this);
   fire = minim.loadSnippet("fire.mp3");
+  sounds.add(fire);
+  empty = minim.loadSnippet("empty.mp3");
+  sounds.add(empty);
 }//End setup()
-
-
-
 
 //Maps stored in this String array
 String[] maps = {"map1.png","map2.png","map3.png"};
@@ -21,6 +22,7 @@ PImage menuImage;
 
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 ArrayList<Level> levels = new ArrayList<Level>();
+ArrayList<AudioSnippet> sounds = new ArrayList<AudioSnippet>();
 
 int currentLevel=0;
 boolean loaded = false;
@@ -71,6 +73,7 @@ void menuScreen()
     fill(0);
     if(mouseButton == LEFT)
     {
+      AudioSnippet fire = sounds.get(0);
       fire.rewind();
       fire.play();
 

@@ -9,6 +9,7 @@ class Player extends Characters
   boolean shoot = false;
   PVector left;
   PVector right;
+
   
   Player(char move, char moveBack, char moveLeft, char moveRight, char fire, float startX, float startY, color c)
   {
@@ -85,6 +86,9 @@ class Player extends Characters
       }
       if(ammo > 0)
       {
+        AudioSnippet fire = sounds.get(0);
+      fire.rewind();
+      fire.play();
       if(weapon=="pistol" )
       { 
         Bullet bullet = new Bullet();

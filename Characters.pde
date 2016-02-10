@@ -12,6 +12,7 @@ abstract class Characters extends GameObject
   
   void render()
   {
+    fire.play();
     pushMatrix();
     translate(pos.x, pos.y);
     stroke(c);
