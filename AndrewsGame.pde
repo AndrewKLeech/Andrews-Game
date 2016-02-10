@@ -57,15 +57,21 @@ void keyReleased()
 void menuScreen()
 {
   background(menuImage);
-  line(450,345,780,420);
   textSize(50);
   text("PLAY", 555, 400);
   textSize(10);
-  if(mouseX<780 && mouseX>450 && mouseY>345 && mouseY<420 && mouseButton == LEFT)
+  if(mouseX<780 && mouseX>450 && mouseY>345 && mouseY<420)
   {
-    mouseButton = 0;
-    screen = 1;
-    println("here");
+    fill(0);
+    if(mouseButton == LEFT)
+    {
+      mouseButton = 0;
+      screen = 1;
+    }
+  }
+  else
+  {
+    fill(255);
   }
 }
 
