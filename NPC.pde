@@ -77,11 +77,22 @@ class NPC extends Characters
            pos.add(forward);
            moving=true;
          }
+          else
+         {
+           moving = false;
+         }
        }
        else
        {
+         if(pos.dist(gameObjects.get(0).pos) > 40)
+         {
          pos.add(forward);
          moving=true;
+         }
+         else
+         {
+           moving = false;
+         }
        }
        detectors.remove(0);
        detectorAlive = false;

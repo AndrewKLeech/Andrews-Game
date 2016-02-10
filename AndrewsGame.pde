@@ -127,12 +127,9 @@ void menuScreen()
 
 void gameScreen()
 {
-  background(0);
   loadLevels();
   background(levels.get(currentLevel).map);
-  text("x: "+mouseX+" y: "+mouseY, 10, 15);
-  text(frameRate, 100,15);
-      
+  text("x: "+mouseX+" y: "+mouseY, 10, 15);//Remove at end
 
   for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
   {
