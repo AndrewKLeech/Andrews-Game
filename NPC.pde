@@ -10,6 +10,7 @@ class NPC extends Characters
   }//End NPC
 
   int inSight = 0;
+  int health = 2;
   boolean detected = false;
   boolean detectorAlive;
   int elapsed = 12;
@@ -18,6 +19,10 @@ class NPC extends Characters
   
   void update()
   {
+    if(health <= 0)
+    {
+      gameObjects.remove(this);
+    }
     if(detectorAlive == false)
     {
       Detector detector = new Detector();
@@ -71,7 +76,7 @@ class NPC extends Characters
        pos.add(forward);
        moving=true;
     }
-    if (elapsed > 50 && weapon!="hands" && detected )
+    if (elapsed > 50 && detected )
     {
       if(weapon=="pistol" )
       { 

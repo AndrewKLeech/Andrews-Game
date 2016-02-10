@@ -1,19 +1,30 @@
+import ddf.minim.*;
+AudioSnippet fire;
+Minim minim;
 void setup()
 {
   size(1200, 700);
   menuImage = loadImage("menu.png");
+  //sounds
+  minim = new Minim(this);
+  fire = minim.loadSnippet("fire.mp3");
 }//End setup()
+
+
+
 
 //Maps stored in this String array
 String[] maps = {"map1.png","map2.png","map3.png"};
 String[] mapData = {"map1_spawns.txt","map2_spawns.txt","map3_spawns.txt"};
 String[] mapWalls = {"map1_walls.txt","map2_walls.txt","map3_walls.txt"};
 PImage menuImage;
+
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 ArrayList<Level> levels = new ArrayList<Level>();
 
 int currentLevel=0;
 boolean loaded = false;
+//0 is menu, 1 is game screen
 int screen = 0;
 boolean[] keys = new boolean[512];
 
@@ -36,11 +47,6 @@ void loadLevels()
     levels.add(level);
     loaded = true;
     levels.get(currentLevel).load(currentLevel,mapData[currentLevel],mapWalls[currentLevel]);
-    for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
-  {
-    println(gameObjects.get(i));
-    
-  }
   }//End if
 }//End loadLevels()
 
@@ -65,6 +71,9 @@ void menuScreen()
     fill(0);
     if(mouseButton == LEFT)
     {
+      fire.rewind();
+      fire.play();
+
       mouseButton = 0;
       screen = 1;
     }

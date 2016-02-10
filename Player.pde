@@ -63,11 +63,27 @@ class Player extends Characters
     {
       pos.add(right);
     }//End if
-    if (mouseButton == LEFT  && elapsed > 12 && ammo > 0 && weapon!="hands")
+    if (mouseButton == LEFT  && elapsed > 12)
     {
       mouseButton=0;
       shoot = ! shoot;
       if(shoot)
+      {
+      if(weapon=="hands")
+      {
+        for(int i = 0; i < gameObjects.size() -1; i++)
+        {
+          GameObject other = gameObjects.get(i);
+          if(other instanceof NPC)
+          {
+            if (pos.dist(other.pos) < w)
+            {
+            ((NPC) other).health--;
+            }
+          }
+        }
+      }
+      if(ammo > 0)
       {
       if(weapon=="pistol" )
       { 
@@ -115,8 +131,10 @@ class Player extends Characters
         bullet.theta = theta;
         gameObjects.add(bullet);
        }//End if
+       ammo --;
+      }
         elapsed = 0;
-        ammo --;
+        
       }
     }//End if
 
