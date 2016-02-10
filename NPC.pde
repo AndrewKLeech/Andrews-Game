@@ -3,6 +3,7 @@ class NPC extends Characters
   NPC(float startX, float startY, color c)
   {
     super(startX, startY);
+    speed = 2.0f;
     this.c = c;
     lives = 1;
     
@@ -31,13 +32,12 @@ class NPC extends Characters
 
     }
 
-     
-        if(detectorAlive = true)
-        {
-           detectors.get(0).update();
-          detectors.get(0).render();
-          inSight = detectors.get(0).inSight();
-        }
+    if(detectorAlive = true)
+    {
+      detectors.get(0).update();
+      detectors.get(0).render();
+      inSight = detectors.get(0).inSight();
+    }
     
    
     forward.x = sin(theta);
@@ -67,8 +67,6 @@ class NPC extends Characters
        theta = atan2(gameObjects.get(0).pos.y- pos.y, gameObjects.get(0).pos.x -pos.x)+PI/2;
        //Move towards player
        pos.add(forward);
-       detectors.remove(0);
-       detectorAlive = false;
       
     }
   
