@@ -38,51 +38,55 @@ boolean[] keys = new boolean[512];
 
 void loadLevels()
 { 
-    if(maps.length <= currentLevel+1)
-  {
-    screen = 2;
-  }
-  else
-  {
-  //If all npc's are dead go to next level
-  if(loaded && levels.get(currentLevel).npcCount == 0 && currentLevel<maps.length-1)
-  {
-    //Remove all gameObjects at end of level
-    for(int i = gameObjects.size() - 1 ; i >= 0;i--)
-    {
-      gameObjects.remove(i);
-    }//End for
+  
 
-    currentLevel++;
     
-    loaded = false;
-
-  }//End if
-  if(loaded)
-  {
-    if(gameObjects.get(0) instanceof Player)
-    {
-      
-    }
-    else
+    //If all npc's are dead go to next level
+    if(loaded && levels.get(currentLevel).npcCount == 0 && currentLevel<maps.length)
     {
       //Remove all gameObjects at end of level
-       for(int i = gameObjects.size() - 1 ; i >= 0;i--)
-      {  
+      for(int i = gameObjects.size() - 1 ; i >= 0;i--)
+      {
         gameObjects.remove(i);
       }//End for
+  
+      currentLevel++;
+      if(currentLevel > maps.length-1)
+      {
+        screen = 2;
+      }
+      else
+      {
       loaded = false;
-      levels.remove(currentLevel);
+      }
+  
+    }//End if
+    if(loaded && screen != 2)
+    {
+      if(gameObjects.get(0) instanceof Player)
+      {
+        
+      }
+      else
+      {
+        //Remove all gameObjects at end of level
+         for(int i = gameObjects.size() - 1 ; i >= 0;i--)
+        {  
+          gameObjects.remove(i);
+        }//End for
+        loaded = false;
+        levels.remove(currentLevel);
+      }
+   
     }
-  }
-  }
-  if(loaded == false)
-  {
-    Level level = new Level(maps[currentLevel]);
-    levels.add(level);
-    loaded = true;
-    levels.get(currentLevel).load(currentLevel,mapData[currentLevel],mapWalls[currentLevel]);
-  }//End if
+    if(loaded == false)
+    {
+      Level level = new Level(maps[currentLevel]);
+      levels.add(level);
+      loaded = true;
+      levels.get(currentLevel).load(currentLevel,mapData[currentLevel],mapWalls[currentLevel]);
+    }//End if
+
 }//End loadLevels()
 
 void keyPressed()
@@ -137,7 +141,11 @@ void menuScreen()
 
 void gameScreen()
 {
-  loadLevels();
+
+      loadLevels();
+  
+if(screen == 1)
+{
   background(levels.get(currentLevel).map);
   text("x: "+mouseX+" y: "+mouseY, 10, 15);//Remove at end
 
@@ -148,6 +156,7 @@ void gameScreen()
     go.render();
   }//End for
   checkCollisions();
+}
 }
 
 void endScreen()
