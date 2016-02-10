@@ -7,25 +7,21 @@ class Detector extends GameObject
   
   void render()
   {
-    stroke(0);
     pushMatrix();
     translate(pos.x, pos.y);
     rotate(theta);
-    line(0, -15, 0, -5);
     popMatrix();    
   }
   
   void update()
   {
-
-     theta = atan2(gameObjects.get(0).pos.y- pos.y, gameObjects.get(0).pos.x -pos.x)+PI/2;
-
+    theta = atan2(gameObjects.get(0).pos.y- pos.y, gameObjects.get(0).pos.x -pos.x)+PI/2;
     forward.x = sin(theta);
     forward.y = - cos(theta);
     forward.mult(speed);
     pos.add(forward);
     
-    //Bullet removed if it hits the edge of the screen
+    //Detector removed if it hits the edge of the screen
     if (pos.x < 0 || pos.y < 0 || pos.x > width || pos.y > height)
     {
       gameObjects.remove(this);
@@ -41,6 +37,7 @@ class Detector extends GameObject
       {
         if (pos.x > ((Walls)other).x1 && pos.x < ((Walls)other).x2 && pos.y > ((Walls)other).y1 && pos.y < ((Walls)other).y2)
           {
+            //Return 2 if wall has been hit
             return 2;
           }//End if
       }
@@ -48,11 +45,12 @@ class Detector extends GameObject
       {
          if (pos.dist(other.pos) < halfW)
           {
+            //Return 1 if player has been hit
             return 1;
           }
       }
     }
-    return 0;
-        
-  }
+    //return 0 if nothing has been hit
+    return 0;   
+  }//End inSight
 }//End Bullet class
